@@ -47,6 +47,8 @@
             ckb_ctrl1 = new CheckBox();
             cb_key1 = new ComboBox();
             label2 = new Label();
+            ckb_autoStart = new CheckBox();
+            ckb_startMinimized = new CheckBox();
             contextMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
@@ -223,12 +225,38 @@
             label2.TabIndex = 13;
             label2.Text = "Bota virgula pra mim Mini";
             // 
+            // ckb_autoStart
+            // 
+            ckb_autoStart.AutoSize = true;
+            ckb_autoStart.ForeColor = SystemColors.ButtonHighlight;
+            ckb_autoStart.Location = new Point(12, 308);
+            ckb_autoStart.Name = "ckb_autoStart";
+            ckb_autoStart.Size = new Size(147, 19);
+            ckb_autoStart.TabIndex = 14;
+            ckb_autoStart.Text = "Iniciar com o Windows";
+            ckb_autoStart.UseVisualStyleBackColor = true;
+            ckb_autoStart.CheckedChanged += ckb_autoStart_CheckedChanged;
+            // 
+            // ckb_startMinimized
+            // 
+            ckb_startMinimized.AutoSize = true;
+            ckb_startMinimized.ForeColor = SystemColors.ButtonHighlight;
+            ckb_startMinimized.Location = new Point(165, 308);
+            ckb_startMinimized.Name = "ckb_startMinimized";
+            ckb_startMinimized.Size = new Size(124, 19);
+            ckb_startMinimized.TabIndex = 15;
+            ckb_startMinimized.Text = "Iniciar minimizado";
+            ckb_startMinimized.UseVisualStyleBackColor = true;
+            ckb_startMinimized.CheckedChanged += ckb_startMinimized_CheckedChanged;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(404, 333);
+            Controls.Add(ckb_startMinimized);
+            Controls.Add(ckb_autoStart);
             Controls.Add(label2);
             Controls.Add(ckb_active1);
             Controls.Add(ckb_shift1);
@@ -270,5 +298,7 @@
         private CheckBox ckb_ctrl1;
         private ComboBox cb_key1;
         private Label label2;
+        private CheckBox ckb_autoStart;
+        private CheckBox ckb_startMinimized;
     }
 }

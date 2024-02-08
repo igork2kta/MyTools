@@ -9,7 +9,6 @@ namespace MyTools
         public MainForm()
         {
             InitializeComponent();
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -17,6 +16,9 @@ namespace MyTools
             DarkTitleBarClass.UseImmersiveDarkMode(Handle, true);
             cb_key0.DataSource = Enum.GetNames(typeof(Keys));
             cb_key1.DataSource = Enum.GetNames(typeof(Keys));
+            ckb_autoStart.Checked = Properties.Settings.Default.AutoStart;
+            ckb_startMinimized.Checked = Properties.Settings.Default.StartMinimized;
+            if (Properties.Settings.Default.StartMinimized) WindowState = FormWindowState.Minimized;
             StartCommands();
         }
 
@@ -134,6 +136,16 @@ namespace MyTools
             }
         }
 
+        private void ckb_autoStart_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoStartManager.SetAutoStart(ckb_autoStart.Checked);
+        }
+        private void ckb_startMinimized_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.StartMinimized = ckb_startMinimized.Checked;
+            Properties.Settings.Default.Save();
+        }
+
         private void AbrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Normal;
@@ -142,6 +154,7 @@ namespace MyTools
 
         private void FecharToolStripMenuItem_Click(object sender, EventArgs e) => Close();
 
+        
     }
 
 }
