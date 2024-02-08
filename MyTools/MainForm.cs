@@ -8,10 +8,12 @@ namespace MyTools
         public MainForm()
         {
             InitializeComponent();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            DarkTitleBarClass.UseImmersiveDarkMode(Handle, true);
             cb_key0.DataSource = Enum.GetNames(typeof(Keys));
             cb_key1.DataSource = Enum.GetNames(typeof(Keys));
             StartCommands();
@@ -21,6 +23,8 @@ namespace MyTools
         {
             List<ShortcutKey> shortcuts = new List<ShortcutKey>();
             shortcuts = ConfigLoader.LoadConfig();
+
+            if (shortcuts.Count == 0) return;
 
             //Create new text file document
             ckb_ctrl0.Checked = shortcuts[0].Control;
@@ -73,7 +77,7 @@ namespace MyTools
                 Control = ckb_ctrl1.Checked,
                 Shift = ckb_shift1.Checked,
                 Alt = ckb_alt1.Checked,
-                EventHandler = (s, e) => { BotaVirgulaPraMimMini.executar(); },
+                EventHandler = (s, e) => { BotaVirgulaPraMimMini.Executar(); },
                 Active = ckb_active1.Checked
             };
         }
@@ -84,7 +88,6 @@ namespace MyTools
             {
                 CreateNewTextFileCommand(),
                 BotaVirgulaPraMimMiniCommand()
-                
             };
             ConfigLoader.SaveConfig(shortcuts);
             KeyboardHook.Stop();
@@ -137,7 +140,6 @@ namespace MyTools
         }
 
         private void FecharToolStripMenuItem_Click(object sender, EventArgs e) => Close();
-
 
     }
 

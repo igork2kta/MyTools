@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyTools
+﻿namespace MyTools
 {
     public static class GravaLog
     {
-
-
         public static void Gravar(string texto, string strNomeArquivo = "")
         {
             // if (Properties.Settings.Default.cbAutoStart)

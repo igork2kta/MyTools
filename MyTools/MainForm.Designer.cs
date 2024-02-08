@@ -54,6 +54,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ButtonHighlight;
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
             label1.Size = new Size(248, 21);
@@ -86,6 +87,7 @@
             // ckb_ctrl0
             // 
             ckb_ctrl0.AutoSize = true;
+            ckb_ctrl0.ForeColor = SystemColors.ButtonHighlight;
             ckb_ctrl0.Location = new Point(38, 38);
             ckb_ctrl0.Name = "ckb_ctrl0";
             ckb_ctrl0.Size = new Size(45, 19);
@@ -96,6 +98,7 @@
             // ckb_alt0
             // 
             ckb_alt0.AutoSize = true;
+            ckb_alt0.ForeColor = SystemColors.ButtonHighlight;
             ckb_alt0.Location = new Point(89, 38);
             ckb_alt0.Name = "ckb_alt0";
             ckb_alt0.Size = new Size(41, 19);
@@ -106,6 +109,7 @@
             // ckb_shift0
             // 
             ckb_shift0.AutoSize = true;
+            ckb_shift0.ForeColor = SystemColors.ButtonHighlight;
             ckb_shift0.Location = new Point(136, 38);
             ckb_shift0.Name = "ckb_shift0";
             ckb_shift0.Size = new Size(50, 19);
@@ -118,6 +122,7 @@
             ckb_active0.AutoSize = true;
             ckb_active0.Checked = true;
             ckb_active0.CheckState = CheckState.Checked;
+            ckb_active0.ForeColor = SystemColors.ButtonHighlight;
             ckb_active0.Location = new Point(318, 40);
             ckb_active0.Name = "ckb_active0";
             ckb_active0.Size = new Size(54, 19);
@@ -158,6 +163,7 @@
             ckb_active1.AutoSize = true;
             ckb_active1.Checked = true;
             ckb_active1.CheckState = CheckState.Checked;
+            ckb_active1.ForeColor = SystemColors.ButtonHighlight;
             ckb_active1.Location = new Point(318, 104);
             ckb_active1.Name = "ckb_active1";
             ckb_active1.Size = new Size(54, 19);
@@ -168,6 +174,7 @@
             // ckb_shift1
             // 
             ckb_shift1.AutoSize = true;
+            ckb_shift1.ForeColor = SystemColors.ButtonHighlight;
             ckb_shift1.Location = new Point(136, 102);
             ckb_shift1.Name = "ckb_shift1";
             ckb_shift1.Size = new Size(50, 19);
@@ -178,6 +185,7 @@
             // ckb_alt1
             // 
             ckb_alt1.AutoSize = true;
+            ckb_alt1.ForeColor = SystemColors.ButtonHighlight;
             ckb_alt1.Location = new Point(89, 102);
             ckb_alt1.Name = "ckb_alt1";
             ckb_alt1.Size = new Size(41, 19);
@@ -188,6 +196,7 @@
             // ckb_ctrl1
             // 
             ckb_ctrl1.AutoSize = true;
+            ckb_ctrl1.ForeColor = SystemColors.ButtonHighlight;
             ckb_ctrl1.Location = new Point(38, 102);
             ckb_ctrl1.Name = "ckb_ctrl1";
             ckb_ctrl1.Size = new Size(45, 19);
@@ -207,16 +216,18 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.ButtonHighlight;
             label2.Location = new Point(12, 73);
             label2.Name = "label2";
             label2.Size = new Size(210, 21);
             label2.TabIndex = 13;
             label2.Text = "Bota virgula pra mim Mini";
             // 
-            // Form1
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(404, 333);
             Controls.Add(label2);
             Controls.Add(ckb_active1);
@@ -232,7 +243,7 @@
             Controls.Add(label1);
             Controls.Add(cb_key0);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Form1";
+            Name = "MainForm";
             Text = "My Tools";
             Load += Form1_Load;
             SizeChanged += Form1_SizeChanged;
