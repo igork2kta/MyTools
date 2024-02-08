@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace MyTools
+namespace MyTools.Classes
 {
     internal class DarkTitleBarClass
     {

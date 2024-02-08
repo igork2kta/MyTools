@@ -2,26 +2,24 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace MyTools
+namespace MyTools.Classes
 {
     public class CreateNewTextFile
     {
         // COM Imports
         [DllImport("user32.dll")]
         static extern IntPtr GetForegroundWindow();
-
+        
         [DllImport("user32.dll")]
         static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
 
         static string GetActiveExplorerPath()
         {
-            GravaLog.Gravar("Obtendo janela");
             // get the active window
             IntPtr handle = GetForegroundWindow();
 
-            GravaLog.Gravar("Obtendo sei la o que");
             // Required ref: SHDocVw (Microsoft Internet Controls COM Object) - C:\Windows\system32\ShDocVw.dll
-            ShellWindows shellWindows = new SHDocVw.ShellWindows();
+            ShellWindows shellWindows = new ShellWindows();
 
             // loop through all windows
             foreach (InternetExplorer window in shellWindows)
@@ -46,46 +44,43 @@ namespace MyTools
                             const int nChars = 256;
                             StringBuilder Buff = new StringBuilder(nChars);
                             if (GetWindowText(handle, Buff, nChars) > 0)
-                            {
                                 return Buff.ToString();
-                            }
+                            
                         }
                         else
-                        {
                             return currentFolder.Path;
-                        }
                     }
-
                     break;
                 }
             }
-
-            return null;
+            return "";
         }
 
         public static void Criar()
         {
             string caminho = GetActiveExplorerPath();
+            
             if (caminho == null)
+                return;
+
+            string nomeArquivo = "Novo Documento de Texto.txt";
+
+            // Verifica se o arquivo base já existe
+            if (!File.Exists(Path.Combine(caminho, nomeArquivo)))
             {
-                GravaLog.Gravar("Erro ao obter caminho");
+                File.Create(Path.Combine(caminho, nomeArquivo)).Close();
                 return;
             }
 
-            //Console.WriteLine(caminho);
-
-
-            if (!File.Exists(caminho + "\\Novo Documento de Texto.txt"))
-                using (File.Create(caminho + "\\Novo Documento de Texto.txt")) ;
-
-            else
+            // Procura um nome alternativo
+            for (int i = 1; i < 50; i++)
             {
-                for (int i = 1; i < 50; i++)
-                    if (!File.Exists(caminho + $"\\Novo Documento de Texto ({i}).txt"))
-                    {
-                        using (File.Create(caminho + $"\\Novo Documento de Texto ({i}).txt"));
-                        return;
-                    }
+                caminho = Path.Combine(caminho, $"Novo Documento de Texto ({i}).txt");
+                if (!File.Exists(caminho))
+                {
+                    File.Create(caminho).Close();
+                    return;
+                }
             }
         }
     }

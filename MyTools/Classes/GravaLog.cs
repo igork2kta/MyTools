@@ -1,4 +1,4 @@
-﻿namespace MyTools
+﻿namespace MyTools.Classes
 {
     public static class GravaLog
     {

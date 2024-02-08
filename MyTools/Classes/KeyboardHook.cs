@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text.Json.Serialization;
 
-namespace MyTools
+namespace MyTools.Classes
 {
     public class ShortcutKey
     {
