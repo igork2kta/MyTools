@@ -28,256 +28,297 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            label1 = new Label();
-            bt_save = new Button();
-            cb_key0 = new ComboBox();
-            ckb_ctrl0 = new CheckBox();
-            ckb_alt0 = new CheckBox();
-            ckb_shift0 = new CheckBox();
-            ckb_active0 = new CheckBox();
-            notifyIcon = new NotifyIcon(components);
-            contextMenuStrip = new ContextMenuStrip(components);
-            abrirToolStripMenuItem = new ToolStripMenuItem();
-            fecharToolStripMenuItem = new ToolStripMenuItem();
-            ckb_active1 = new CheckBox();
-            ckb_shift1 = new CheckBox();
-            ckb_alt1 = new CheckBox();
-            ckb_ctrl1 = new CheckBox();
-            cb_key1 = new ComboBox();
-            label2 = new Label();
-            ckb_autoStart = new CheckBox();
-            ckb_startMinimized = new CheckBox();
-            contextMenuStrip.SuspendLayout();
-            SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bt_save = new System.Windows.Forms.Button();
+            this.cb_key0 = new System.Windows.Forms.ComboBox();
+            this.ckb_ctrl0 = new System.Windows.Forms.CheckBox();
+            this.ckb_alt0 = new System.Windows.Forms.CheckBox();
+            this.ckb_shift0 = new System.Windows.Forms.CheckBox();
+            this.ckb_active0 = new System.Windows.Forms.CheckBox();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fecharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ckb_active1 = new System.Windows.Forms.CheckBox();
+            this.ckb_shift1 = new System.Windows.Forms.CheckBox();
+            this.ckb_alt1 = new System.Windows.Forms.CheckBox();
+            this.ckb_ctrl1 = new System.Windows.Forms.CheckBox();
+            this.cb_key1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ckb_autoStart = new System.Windows.Forms.CheckBox();
+            this.ckb_startMinimized = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ckb_alwaysPresent = new System.Windows.Forms.CheckBox();
+            this.contextMenuStrip.SuspendLayout();
+            this.SuspendLayout();
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(248, 21);
-            label1.TabIndex = 1;
-            label1.Text = "Criar novo documento de texto";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(14, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(308, 28);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Criar novo documento de texto";
             // 
             // bt_save
             // 
-            bt_save.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            bt_save.BackColor = Color.Transparent;
-            bt_save.FlatAppearance.BorderSize = 0;
-            bt_save.FlatStyle = FlatStyle.Flat;
-            bt_save.ForeColor = Color.Transparent;
-            bt_save.Image = (Image)resources.GetObject("bt_save.Image");
-            bt_save.Location = new Point(365, 295);
-            bt_save.Name = "bt_save";
-            bt_save.Size = new Size(32, 32);
-            bt_save.TabIndex = 7;
-            bt_save.UseVisualStyleBackColor = false;
-            bt_save.Click += bt_save_Click;
+            this.bt_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_save.BackColor = System.Drawing.Color.Transparent;
+            this.bt_save.FlatAppearance.BorderSize = 0;
+            this.bt_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bt_save.ForeColor = System.Drawing.Color.Transparent;
+            this.bt_save.Image = ((System.Drawing.Image)(resources.GetObject("bt_save.Image")));
+            this.bt_save.Location = new System.Drawing.Point(417, 393);
+            this.bt_save.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bt_save.Name = "bt_save";
+            this.bt_save.Size = new System.Drawing.Size(37, 43);
+            this.bt_save.TabIndex = 7;
+            this.bt_save.UseVisualStyleBackColor = false;
             // 
             // cb_key0
             // 
-            cb_key0.FormattingEnabled = true;
-            cb_key0.Location = new Point(192, 36);
-            cb_key0.Name = "cb_key0";
-            cb_key0.Size = new Size(108, 23);
-            cb_key0.TabIndex = 0;
+            this.cb_key0.FormattingEnabled = true;
+            this.cb_key0.Location = new System.Drawing.Point(219, 48);
+            this.cb_key0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cb_key0.Name = "cb_key0";
+            this.cb_key0.Size = new System.Drawing.Size(123, 28);
+            this.cb_key0.TabIndex = 0;
             // 
             // ckb_ctrl0
             // 
-            ckb_ctrl0.AutoSize = true;
-            ckb_ctrl0.ForeColor = SystemColors.ButtonHighlight;
-            ckb_ctrl0.Location = new Point(38, 38);
-            ckb_ctrl0.Name = "ckb_ctrl0";
-            ckb_ctrl0.Size = new Size(45, 19);
-            ckb_ctrl0.TabIndex = 3;
-            ckb_ctrl0.Text = "Ctrl";
-            ckb_ctrl0.UseVisualStyleBackColor = true;
+            this.ckb_ctrl0.AutoSize = true;
+            this.ckb_ctrl0.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ckb_ctrl0.Location = new System.Drawing.Point(43, 51);
+            this.ckb_ctrl0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ckb_ctrl0.Name = "ckb_ctrl0";
+            this.ckb_ctrl0.Size = new System.Drawing.Size(54, 24);
+            this.ckb_ctrl0.TabIndex = 3;
+            this.ckb_ctrl0.Text = "Ctrl";
+            this.ckb_ctrl0.UseVisualStyleBackColor = true;
             // 
             // ckb_alt0
             // 
-            ckb_alt0.AutoSize = true;
-            ckb_alt0.ForeColor = SystemColors.ButtonHighlight;
-            ckb_alt0.Location = new Point(89, 38);
-            ckb_alt0.Name = "ckb_alt0";
-            ckb_alt0.Size = new Size(41, 19);
-            ckb_alt0.TabIndex = 4;
-            ckb_alt0.Text = "Alt";
-            ckb_alt0.UseVisualStyleBackColor = true;
+            this.ckb_alt0.AutoSize = true;
+            this.ckb_alt0.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ckb_alt0.Location = new System.Drawing.Point(102, 51);
+            this.ckb_alt0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ckb_alt0.Name = "ckb_alt0";
+            this.ckb_alt0.Size = new System.Drawing.Size(50, 24);
+            this.ckb_alt0.TabIndex = 4;
+            this.ckb_alt0.Text = "Alt";
+            this.ckb_alt0.UseVisualStyleBackColor = true;
             // 
             // ckb_shift0
             // 
-            ckb_shift0.AutoSize = true;
-            ckb_shift0.ForeColor = SystemColors.ButtonHighlight;
-            ckb_shift0.Location = new Point(136, 38);
-            ckb_shift0.Name = "ckb_shift0";
-            ckb_shift0.Size = new Size(50, 19);
-            ckb_shift0.TabIndex = 5;
-            ckb_shift0.Text = "Shift";
-            ckb_shift0.UseVisualStyleBackColor = true;
+            this.ckb_shift0.AutoSize = true;
+            this.ckb_shift0.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ckb_shift0.Location = new System.Drawing.Point(155, 51);
+            this.ckb_shift0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ckb_shift0.Name = "ckb_shift0";
+            this.ckb_shift0.Size = new System.Drawing.Size(61, 24);
+            this.ckb_shift0.TabIndex = 5;
+            this.ckb_shift0.Text = "Shift";
+            this.ckb_shift0.UseVisualStyleBackColor = true;
             // 
             // ckb_active0
             // 
-            ckb_active0.AutoSize = true;
-            ckb_active0.Checked = true;
-            ckb_active0.CheckState = CheckState.Checked;
-            ckb_active0.ForeColor = SystemColors.ButtonHighlight;
-            ckb_active0.Location = new Point(318, 40);
-            ckb_active0.Name = "ckb_active0";
-            ckb_active0.Size = new Size(54, 19);
-            ckb_active0.TabIndex = 6;
-            ckb_active0.Text = "Ativo";
-            ckb_active0.UseVisualStyleBackColor = true;
+            this.ckb_active0.AutoSize = true;
+            this.ckb_active0.Checked = true;
+            this.ckb_active0.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckb_active0.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ckb_active0.Location = new System.Drawing.Point(363, 53);
+            this.ckb_active0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ckb_active0.Name = "ckb_active0";
+            this.ckb_active0.Size = new System.Drawing.Size(66, 24);
+            this.ckb_active0.TabIndex = 6;
+            this.ckb_active0.Text = "Ativo";
+            this.ckb_active0.UseVisualStyleBackColor = true;
             // 
             // notifyIcon
             // 
-            notifyIcon.ContextMenuStrip = contextMenuStrip;
-            notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
-            notifyIcon.Text = "My Tools";
-            notifyIcon.Visible = true;
-            notifyIcon.MouseDoubleClick += NotifyIcon_MouseDoubleClick;
+            this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "My Tools";
+            this.notifyIcon.Visible = true;
             // 
             // contextMenuStrip
             // 
-            contextMenuStrip.Items.AddRange(new ToolStripItem[] { abrirToolStripMenuItem, fecharToolStripMenuItem });
-            contextMenuStrip.Name = "contextMenuStrip";
-            contextMenuStrip.Size = new Size(110, 48);
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abrirToolStripMenuItem,
+            this.fecharToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(122, 52);
             // 
             // abrirToolStripMenuItem
             // 
-            abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            abrirToolStripMenuItem.Size = new Size(109, 22);
-            abrirToolStripMenuItem.Text = "Abrir";
-            abrirToolStripMenuItem.Click += AbrirToolStripMenuItem_Click;
+            this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(121, 24);
+            this.abrirToolStripMenuItem.Text = "Abrir";
             // 
             // fecharToolStripMenuItem
             // 
-            fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
-            fecharToolStripMenuItem.Size = new Size(109, 22);
-            fecharToolStripMenuItem.Text = "Fechar";
-            fecharToolStripMenuItem.Click += FecharToolStripMenuItem_Click;
+            this.fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
+            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(121, 24);
+            this.fecharToolStripMenuItem.Text = "Fechar";
             // 
             // ckb_active1
             // 
-            ckb_active1.AutoSize = true;
-            ckb_active1.Checked = true;
-            ckb_active1.CheckState = CheckState.Checked;
-            ckb_active1.ForeColor = SystemColors.ButtonHighlight;
-            ckb_active1.Location = new Point(318, 104);
-            ckb_active1.Name = "ckb_active1";
-            ckb_active1.Size = new Size(54, 19);
-            ckb_active1.TabIndex = 12;
-            ckb_active1.Text = "Ativo";
-            ckb_active1.UseVisualStyleBackColor = true;
+            this.ckb_active1.AutoSize = true;
+            this.ckb_active1.Checked = true;
+            this.ckb_active1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckb_active1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ckb_active1.Location = new System.Drawing.Point(363, 139);
+            this.ckb_active1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ckb_active1.Name = "ckb_active1";
+            this.ckb_active1.Size = new System.Drawing.Size(66, 24);
+            this.ckb_active1.TabIndex = 12;
+            this.ckb_active1.Text = "Ativo";
+            this.ckb_active1.UseVisualStyleBackColor = true;
             // 
             // ckb_shift1
             // 
-            ckb_shift1.AutoSize = true;
-            ckb_shift1.ForeColor = SystemColors.ButtonHighlight;
-            ckb_shift1.Location = new Point(136, 102);
-            ckb_shift1.Name = "ckb_shift1";
-            ckb_shift1.Size = new Size(50, 19);
-            ckb_shift1.TabIndex = 11;
-            ckb_shift1.Text = "Shift";
-            ckb_shift1.UseVisualStyleBackColor = true;
+            this.ckb_shift1.AutoSize = true;
+            this.ckb_shift1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ckb_shift1.Location = new System.Drawing.Point(155, 136);
+            this.ckb_shift1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ckb_shift1.Name = "ckb_shift1";
+            this.ckb_shift1.Size = new System.Drawing.Size(61, 24);
+            this.ckb_shift1.TabIndex = 11;
+            this.ckb_shift1.Text = "Shift";
+            this.ckb_shift1.UseVisualStyleBackColor = true;
             // 
             // ckb_alt1
             // 
-            ckb_alt1.AutoSize = true;
-            ckb_alt1.ForeColor = SystemColors.ButtonHighlight;
-            ckb_alt1.Location = new Point(89, 102);
-            ckb_alt1.Name = "ckb_alt1";
-            ckb_alt1.Size = new Size(41, 19);
-            ckb_alt1.TabIndex = 10;
-            ckb_alt1.Text = "Alt";
-            ckb_alt1.UseVisualStyleBackColor = true;
+            this.ckb_alt1.AutoSize = true;
+            this.ckb_alt1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ckb_alt1.Location = new System.Drawing.Point(102, 136);
+            this.ckb_alt1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ckb_alt1.Name = "ckb_alt1";
+            this.ckb_alt1.Size = new System.Drawing.Size(50, 24);
+            this.ckb_alt1.TabIndex = 10;
+            this.ckb_alt1.Text = "Alt";
+            this.ckb_alt1.UseVisualStyleBackColor = true;
             // 
             // ckb_ctrl1
             // 
-            ckb_ctrl1.AutoSize = true;
-            ckb_ctrl1.ForeColor = SystemColors.ButtonHighlight;
-            ckb_ctrl1.Location = new Point(38, 102);
-            ckb_ctrl1.Name = "ckb_ctrl1";
-            ckb_ctrl1.Size = new Size(45, 19);
-            ckb_ctrl1.TabIndex = 9;
-            ckb_ctrl1.Text = "Ctrl";
-            ckb_ctrl1.UseVisualStyleBackColor = true;
+            this.ckb_ctrl1.AutoSize = true;
+            this.ckb_ctrl1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ckb_ctrl1.Location = new System.Drawing.Point(43, 136);
+            this.ckb_ctrl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ckb_ctrl1.Name = "ckb_ctrl1";
+            this.ckb_ctrl1.Size = new System.Drawing.Size(54, 24);
+            this.ckb_ctrl1.TabIndex = 9;
+            this.ckb_ctrl1.Text = "Ctrl";
+            this.ckb_ctrl1.UseVisualStyleBackColor = true;
             // 
             // cb_key1
             // 
-            cb_key1.FormattingEnabled = true;
-            cb_key1.Location = new Point(192, 100);
-            cb_key1.Name = "cb_key1";
-            cb_key1.Size = new Size(108, 23);
-            cb_key1.TabIndex = 8;
+            this.cb_key1.FormattingEnabled = true;
+            this.cb_key1.Location = new System.Drawing.Point(219, 133);
+            this.cb_key1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cb_key1.Name = "cb_key1";
+            this.cb_key1.Size = new System.Drawing.Size(123, 28);
+            this.cb_key1.TabIndex = 8;
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(12, 73);
-            label2.Name = "label2";
-            label2.Size = new Size(210, 21);
-            label2.TabIndex = 13;
-            label2.Text = "Bota virgula pra mim Mini";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(14, 97);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(262, 28);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Bota virgula pra mim Mini";
             // 
             // ckb_autoStart
             // 
-            ckb_autoStart.AutoSize = true;
-            ckb_autoStart.ForeColor = SystemColors.ButtonHighlight;
-            ckb_autoStart.Location = new Point(12, 308);
-            ckb_autoStart.Name = "ckb_autoStart";
-            ckb_autoStart.Size = new Size(147, 19);
-            ckb_autoStart.TabIndex = 14;
-            ckb_autoStart.Text = "Iniciar com o Windows";
-            ckb_autoStart.UseVisualStyleBackColor = true;
-            ckb_autoStart.CheckedChanged += ckb_autoStart_CheckedChanged;
+            this.ckb_autoStart.AutoSize = true;
+            this.ckb_autoStart.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ckb_autoStart.Location = new System.Drawing.Point(14, 411);
+            this.ckb_autoStart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ckb_autoStart.Name = "ckb_autoStart";
+            this.ckb_autoStart.Size = new System.Drawing.Size(182, 24);
+            this.ckb_autoStart.TabIndex = 14;
+            this.ckb_autoStart.Text = "Iniciar com o Windows";
+            this.ckb_autoStart.UseVisualStyleBackColor = true;
             // 
             // ckb_startMinimized
             // 
-            ckb_startMinimized.AutoSize = true;
-            ckb_startMinimized.ForeColor = SystemColors.ButtonHighlight;
-            ckb_startMinimized.Location = new Point(165, 308);
-            ckb_startMinimized.Name = "ckb_startMinimized";
-            ckb_startMinimized.Size = new Size(124, 19);
-            ckb_startMinimized.TabIndex = 15;
-            ckb_startMinimized.Text = "Iniciar minimizado";
-            ckb_startMinimized.UseVisualStyleBackColor = true;
-            ckb_startMinimized.CheckedChanged += ckb_startMinimized_CheckedChanged;
+            this.ckb_startMinimized.AutoSize = true;
+            this.ckb_startMinimized.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ckb_startMinimized.Location = new System.Drawing.Point(202, 411);
+            this.ckb_startMinimized.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ckb_startMinimized.Name = "ckb_startMinimized";
+            this.ckb_startMinimized.Size = new System.Drawing.Size(154, 24);
+            this.ckb_startMinimized.TabIndex = 15;
+            this.ckb_startMinimized.Text = "Iniciar minimizado";
+            this.ckb_startMinimized.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(14, 181);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(153, 28);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Nunca ausente";
+            // 
+            // ckb_alwaysPresent
+            // 
+            this.ckb_alwaysPresent.AutoSize = true;
+            this.ckb_alwaysPresent.Checked = true;
+            this.ckb_alwaysPresent.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckb_alwaysPresent.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ckb_alwaysPresent.Location = new System.Drawing.Point(186, 187);
+            this.ckb_alwaysPresent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ckb_alwaysPresent.Name = "ckb_alwaysPresent";
+            this.ckb_alwaysPresent.Size = new System.Drawing.Size(66, 24);
+            this.ckb_alwaysPresent.TabIndex = 17;
+            this.ckb_alwaysPresent.Text = "Ativo";
+            this.ckb_alwaysPresent.UseVisualStyleBackColor = true;
+            this.ckb_alwaysPresent.CheckedChanged += new System.EventHandler(this.ckb_alwaysPresent_CheckedChanged);
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(64, 64, 64);
-            ClientSize = new Size(404, 333);
-            Controls.Add(ckb_startMinimized);
-            Controls.Add(ckb_autoStart);
-            Controls.Add(label2);
-            Controls.Add(ckb_active1);
-            Controls.Add(ckb_shift1);
-            Controls.Add(ckb_alt1);
-            Controls.Add(ckb_ctrl1);
-            Controls.Add(cb_key1);
-            Controls.Add(bt_save);
-            Controls.Add(ckb_active0);
-            Controls.Add(ckb_shift0);
-            Controls.Add(ckb_alt0);
-            Controls.Add(ckb_ctrl0);
-            Controls.Add(label1);
-            Controls.Add(cb_key0);
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "MainForm";
-            Text = "My Tools";
-            Load += Form1_Load;
-            SizeChanged += Form1_SizeChanged;
-            contextMenuStrip.ResumeLayout(false);
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ClientSize = new System.Drawing.Size(462, 444);
+            this.Controls.Add(this.ckb_alwaysPresent);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.ckb_startMinimized);
+            this.Controls.Add(this.ckb_autoStart);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.ckb_active1);
+            this.Controls.Add(this.ckb_shift1);
+            this.Controls.Add(this.ckb_alt1);
+            this.Controls.Add(this.ckb_ctrl1);
+            this.Controls.Add(this.cb_key1);
+            this.Controls.Add(this.bt_save);
+            this.Controls.Add(this.ckb_active0);
+            this.Controls.Add(this.ckb_shift0);
+            this.Controls.Add(this.ckb_alt0);
+            this.Controls.Add(this.ckb_ctrl0);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cb_key0);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Name = "MainForm";
+            this.Text = "My Tools";
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.contextMenuStrip.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
@@ -300,5 +341,7 @@
         private Label label2;
         private CheckBox ckb_autoStart;
         private CheckBox ckb_startMinimized;
+        private Label label3;
+        private CheckBox ckb_alwaysPresent;
     }
 }

@@ -6,24 +6,30 @@ namespace MyTools
 {
     public partial class MainForm : Form
     {
+        AlwaysPresent alwaysPresent = new();
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             DarkTitleBarClass.UseImmersiveDarkMode(Handle, true);
             cb_key0.DataSource = Enum.GetNames(typeof(Keys));
             cb_key1.DataSource = Enum.GetNames(typeof(Keys));
+            ckb_alwaysPresent.Checked = Properties.Settings.Default.AlwaysPresent;
             ckb_autoStart.Checked = Properties.Settings.Default.AutoStart;
             ckb_startMinimized.Checked = Properties.Settings.Default.StartMinimized;
             if (Properties.Settings.Default.StartMinimized) WindowState = FormWindowState.Minimized;
+
             StartCommands();
         }
 
         private void StartCommands()
         {
+            if (ckb_alwaysPresent.Checked) alwaysPresent.Start();
+            else alwaysPresent.Stop();
+
             List<ShortcutKey> shortcuts = new List<ShortcutKey>();
             shortcuts = ConfigLoader.LoadConfig();
 
@@ -50,6 +56,8 @@ namespace MyTools
             else shortcuts.Remove(shortcuts[1]);
 
             KeyboardHook.Start(shortcuts);
+
+            
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -154,7 +162,15 @@ namespace MyTools
 
         private void FecharToolStripMenuItem_Click(object sender, EventArgs e) => Close();
 
-        
+        private void ckb_alwaysPresent_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.AlwaysPresent = ckb_alwaysPresent.Checked;
+            Properties.Settings.Default.Save();
+
+            if (ckb_alwaysPresent.Checked) alwaysPresent.Start();
+            else alwaysPresent.Stop();
+
+        }
     }
 
 }
