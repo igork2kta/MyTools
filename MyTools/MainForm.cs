@@ -14,7 +14,7 @@ namespace MyTools
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            DarkTitleBarClass.UseImmersiveDarkMode(Handle, true);
+            //DarkTitleBarClass.UseImmersiveDarkMode(Handle, true);
             cb_key0.DataSource = Enum.GetNames(typeof(Keys));
             cb_key1.DataSource = Enum.GetNames(typeof(Keys));
             ckb_alwaysPresent.Checked = Properties.Settings.Default.AlwaysPresent;
@@ -57,7 +57,7 @@ namespace MyTools
 
             KeyboardHook.Start(shortcuts);
 
-            
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -134,7 +134,7 @@ namespace MyTools
             FormBorderStyle = FormBorderStyle.Sizable;
         }
 
-        private void Form1_SizeChanged(object sender, EventArgs e)
+        private void MainForm_SizeChanged(object sender, EventArgs e)
         {
             if (FormWindowState.Minimized == WindowState)
             {
@@ -156,6 +156,7 @@ namespace MyTools
 
         private void AbrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             WindowState = FormWindowState.Normal;
             ShowInTaskbar = true;
         }
@@ -171,6 +172,7 @@ namespace MyTools
             else alwaysPresent.Stop();
 
         }
+
     }
 
 }
