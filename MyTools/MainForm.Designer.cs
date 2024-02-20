@@ -78,6 +78,7 @@
             bt_save.Size = new Size(32, 32);
             bt_save.TabIndex = 7;
             bt_save.UseVisualStyleBackColor = false;
+            bt_save.Click += bt_save_Click;
             // 
             // cb_key0
             // 
