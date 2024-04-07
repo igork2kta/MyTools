@@ -154,12 +154,14 @@
             abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
             abrirToolStripMenuItem.Size = new Size(109, 22);
             abrirToolStripMenuItem.Text = "Abrir";
+            abrirToolStripMenuItem.Click += AbrirToolStripMenuItem_Click;
             // 
             // fecharToolStripMenuItem
             // 
             fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
             fecharToolStripMenuItem.Size = new Size(109, 22);
             fecharToolStripMenuItem.Text = "Fechar";
+            fecharToolStripMenuItem.Click += FecharToolStripMenuItem_Click;
             // 
             // ckb_active1
             // 
