@@ -1,10 +1,8 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
+﻿using System.Runtime.InteropServices;
 
 namespace MyTools.Classes
 {
-    public  class AlwaysPresent
+    public static class AlwaysPresent
     {
         static System.Windows.Forms.Timer mouseMoveTimer;
 
@@ -26,7 +24,7 @@ namespace MyTools.Classes
 
 
 
-        public void Start()
+        public static void Start()
         {
             // Inicializa o Timer para mover o mouse a cada 5 minutos
             mouseMoveTimer = new System.Windows.Forms.Timer();
@@ -48,7 +46,7 @@ namespace MyTools.Classes
 
         }
 
-        public void Stop()
+        public static void Stop()
         {
             // Restaurar o comportamento padrão de suspensão e desligamento do monitor
             SetThreadExecutionState(EXECUTION_STATE.ES_CONTINUOUS);
@@ -73,7 +71,7 @@ namespace MyTools.Classes
         static void StopMouseMove()
         {
             // Para o Timer
-            if(mouseMoveTimer != null)
+            if (mouseMoveTimer != null)
             {
                 mouseMoveTimer.Stop();
                 mouseMoveTimer.Dispose();

@@ -1,12 +1,9 @@
-using System.Diagnostics;
-using System.Runtime.InteropServices;
 using MyTools.Classes;
 
 namespace MyTools
 {
     public partial class MainForm : Form
     {
-        AlwaysPresent alwaysPresent = new();
         public MainForm()
         {
             InitializeComponent();
@@ -27,8 +24,8 @@ namespace MyTools
 
         private void StartCommands()
         {
-            if (ckb_alwaysPresent.Checked) alwaysPresent.Start();
-            else alwaysPresent.Stop();
+            if (ckb_alwaysPresent.Checked) AlwaysPresent.Start();
+            else AlwaysPresent.Stop();
 
             List<ShortcutKey> shortcuts = new List<ShortcutKey>();
             shortcuts = ConfigLoader.LoadConfig();
@@ -168,8 +165,8 @@ namespace MyTools
             Properties.Settings.Default.AlwaysPresent = ckb_alwaysPresent.Checked;
             Properties.Settings.Default.Save();
 
-            if (ckb_alwaysPresent.Checked) alwaysPresent.Start();
-            else alwaysPresent.Stop();
+            if (ckb_alwaysPresent.Checked) AlwaysPresent.Start();
+            else AlwaysPresent.Stop();
 
         }
 
