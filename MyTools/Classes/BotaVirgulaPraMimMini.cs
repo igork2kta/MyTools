@@ -1,6 +1,4 @@
 ﻿using System.Text;
-using static System.Windows.Forms.LinkLabel;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace MyTools.Classes
 {
@@ -10,10 +8,10 @@ namespace MyTools.Classes
         {
             //Obtém o texto da área de transferencia
             string clipboardText = Clipboard.GetText();
-            
+
             if (string.IsNullOrEmpty(clipboardText))
                 return;
-            
+
             string[] split = clipboardText.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
 
             StringBuilder resultBuilder = new StringBuilder();
@@ -28,13 +26,7 @@ namespace MyTools.Classes
 
             Clipboard.SetText(resultBuilder.ToString());
 
-            using NotifyIcon notifyIcon = new NotifyIcon
-            {
-                Icon = SystemIcons.Information,
-                Visible = true
-            };
-
-            notifyIcon.ShowBalloonTip(3000, "Pronto!", "Texto com vírgula copiado para sua área de transferência!", ToolTipIcon.Info);
+            Notification.SendNotification("Pronto!", "Texto com vírgula copiado para sua área de transferência!");
 
         }
     }

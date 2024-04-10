@@ -14,6 +14,7 @@ namespace MyTools
             //DarkTitleBarClass.UseImmersiveDarkMode(Handle, true);
             cb_key0.DataSource = Enum.GetNames(typeof(Keys));
             cb_key1.DataSource = Enum.GetNames(typeof(Keys));
+            cb_key2.DataSource = Enum.GetNames(typeof(Keys));
             ckb_alwaysPresent.Checked = Properties.Settings.Default.AlwaysPresent;
             ckb_autoStart.Checked = Properties.Settings.Default.AutoStart;
             ckb_startMinimized.Checked = Properties.Settings.Default.StartMinimized;
@@ -51,6 +52,19 @@ namespace MyTools
 
             if (shortcuts[1].Active) shortcuts[1] = BotaVirgulaPraMimMiniCommand();
             else shortcuts.Remove(shortcuts[1]);
+
+
+            //Text unformatter
+            ckb_ctrl2.Checked = shortcuts[2].Control;
+            ckb_alt2.Checked = shortcuts[2].Alt;
+            ckb_shift2.Checked = shortcuts[2].Shift;
+            ckb_active2.Checked = shortcuts[2].Active;
+            cb_key2.SelectedItem = shortcuts[2].Key.ToString();
+
+            if (shortcuts[2].Active) shortcuts[2] = TextUnformatterCommand();
+            else shortcuts.Remove(shortcuts[2]);
+
+
 
             KeyboardHook.Start(shortcuts);
 
@@ -90,12 +104,27 @@ namespace MyTools
             };
         }
 
+        private ShortcutKey TextUnformatterCommand()
+        {
+            return new ShortcutKey
+            {
+                Key = GetEnumValue<Keys>(cb_key2.Text),
+                Control = ckb_ctrl2.Checked,
+                Shift = ckb_shift2.Checked,
+                Alt = ckb_alt2.Checked,
+                EventHandler = (s, e) => { TextUnformatter.UnformatText(); },
+                Active = ckb_active2.Checked
+            };
+        }
+
+
         private void bt_save_Click(object sender, EventArgs e)
         {
             List<ShortcutKey> shortcuts = new List<ShortcutKey>
             {
                 CreateNewTextFileCommand(),
-                BotaVirgulaPraMimMiniCommand()
+                BotaVirgulaPraMimMiniCommand(),
+                TextUnformatterCommand()
             };
             ConfigLoader.SaveConfig(shortcuts);
             KeyboardHook.Stop();

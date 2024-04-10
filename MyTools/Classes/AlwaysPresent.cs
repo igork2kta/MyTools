@@ -32,16 +32,11 @@ namespace MyTools.Classes
             mouseMoveTimer.Tick += MouseMoveTimer_Tick;
             mouseMoveTimer.Start();
 
-            using NotifyIcon notifyIcon = new NotifyIcon
-            {
-                Icon = SystemIcons.Information,
-                Visible = true
-            };
             // Impedir que o computador entre em estado de suspensão ou desligamento do monitor
             SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED | EXECUTION_STATE.ES_CONTINUOUS | EXECUTION_STATE.ES_SYSTEM_REQUIRED);
 
 
-            notifyIcon.ShowBalloonTip(3000, "Pronto!", "Sempre ativo em execução, vá fazer o que precisa!", ToolTipIcon.Info);
+            Notification.SendNotification("Pronto!", "Sempre ativo em execução, vá fazer o que precisa!");
 
 
         }
@@ -76,14 +71,7 @@ namespace MyTools.Classes
                 mouseMoveTimer.Stop();
                 mouseMoveTimer.Dispose();
 
-                using NotifyIcon notifyIcon = new NotifyIcon
-                {
-                    Icon = SystemIcons.Information,
-                    Visible = true
-                };
-
-                notifyIcon.ShowBalloonTip(3000, "Pronto!", "Desativado com sucesso!", ToolTipIcon.Info);
-
+                Notification.SendNotification("Pronto!", "Desativado com sucesso!");
             }
 
         }

@@ -51,6 +51,12 @@
             ckb_startMinimized = new CheckBox();
             label3 = new Label();
             ckb_alwaysPresent = new CheckBox();
+            label4 = new Label();
+            ckb_active2 = new CheckBox();
+            ckb_shift2 = new CheckBox();
+            ckb_alt2 = new CheckBox();
+            ckb_ctrl2 = new CheckBox();
+            cb_key2 = new ComboBox();
             contextMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
@@ -257,7 +263,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(12, 136);
+            label3.Location = new Point(12, 202);
             label3.Name = "label3";
             label3.Size = new Size(124, 21);
             label3.TabIndex = 16;
@@ -269,7 +275,7 @@
             ckb_alwaysPresent.Checked = true;
             ckb_alwaysPresent.CheckState = CheckState.Checked;
             ckb_alwaysPresent.ForeColor = SystemColors.ButtonHighlight;
-            ckb_alwaysPresent.Location = new Point(163, 140);
+            ckb_alwaysPresent.Location = new Point(163, 206);
             ckb_alwaysPresent.Name = "ckb_alwaysPresent";
             ckb_alwaysPresent.Size = new Size(54, 19);
             ckb_alwaysPresent.TabIndex = 17;
@@ -277,12 +283,83 @@
             ckb_alwaysPresent.UseVisualStyleBackColor = true;
             ckb_alwaysPresent.CheckedChanged += ckb_alwaysPresent_CheckedChanged;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.ButtonHighlight;
+            label4.Location = new Point(12, 139);
+            label4.Name = "label4";
+            label4.Size = new Size(192, 21);
+            label4.TabIndex = 23;
+            label4.Text = "Desformatador de texto";
+            // 
+            // ckb_active2
+            // 
+            ckb_active2.AutoSize = true;
+            ckb_active2.Checked = true;
+            ckb_active2.CheckState = CheckState.Checked;
+            ckb_active2.ForeColor = SystemColors.ButtonHighlight;
+            ckb_active2.Location = new Point(318, 170);
+            ckb_active2.Name = "ckb_active2";
+            ckb_active2.Size = new Size(54, 19);
+            ckb_active2.TabIndex = 22;
+            ckb_active2.Text = "Ativo";
+            ckb_active2.UseVisualStyleBackColor = true;
+            // 
+            // ckb_shift2
+            // 
+            ckb_shift2.AutoSize = true;
+            ckb_shift2.ForeColor = SystemColors.ButtonHighlight;
+            ckb_shift2.Location = new Point(136, 168);
+            ckb_shift2.Name = "ckb_shift2";
+            ckb_shift2.Size = new Size(50, 19);
+            ckb_shift2.TabIndex = 21;
+            ckb_shift2.Text = "Shift";
+            ckb_shift2.UseVisualStyleBackColor = true;
+            // 
+            // ckb_alt2
+            // 
+            ckb_alt2.AutoSize = true;
+            ckb_alt2.ForeColor = SystemColors.ButtonHighlight;
+            ckb_alt2.Location = new Point(89, 168);
+            ckb_alt2.Name = "ckb_alt2";
+            ckb_alt2.Size = new Size(41, 19);
+            ckb_alt2.TabIndex = 20;
+            ckb_alt2.Text = "Alt";
+            ckb_alt2.UseVisualStyleBackColor = true;
+            // 
+            // ckb_ctrl2
+            // 
+            ckb_ctrl2.AutoSize = true;
+            ckb_ctrl2.ForeColor = SystemColors.ButtonHighlight;
+            ckb_ctrl2.Location = new Point(38, 168);
+            ckb_ctrl2.Name = "ckb_ctrl2";
+            ckb_ctrl2.Size = new Size(45, 19);
+            ckb_ctrl2.TabIndex = 19;
+            ckb_ctrl2.Text = "Ctrl";
+            ckb_ctrl2.UseVisualStyleBackColor = true;
+            // 
+            // cb_key2
+            // 
+            cb_key2.FormattingEnabled = true;
+            cb_key2.Location = new Point(192, 166);
+            cb_key2.Name = "cb_key2";
+            cb_key2.Size = new Size(108, 23);
+            cb_key2.TabIndex = 18;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(404, 333);
+            Controls.Add(label4);
+            Controls.Add(ckb_active2);
+            Controls.Add(ckb_shift2);
+            Controls.Add(ckb_alt2);
+            Controls.Add(ckb_ctrl2);
+            Controls.Add(cb_key2);
             Controls.Add(ckb_alwaysPresent);
             Controls.Add(label3);
             Controls.Add(ckb_startMinimized);
@@ -332,5 +409,11 @@
         private CheckBox ckb_startMinimized;
         private Label label3;
         private CheckBox ckb_alwaysPresent;
+        private Label label4;
+        private CheckBox ckb_active2;
+        private CheckBox ckb_shift2;
+        private CheckBox ckb_alt2;
+        private CheckBox ckb_ctrl2;
+        private ComboBox cb_key2;
     }
 }
