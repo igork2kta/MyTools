@@ -57,6 +57,7 @@
             ckb_alt2 = new CheckBox();
             ckb_ctrl2 = new CheckBox();
             cb_key2 = new ComboBox();
+            label5 = new Label();
             contextMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
@@ -348,12 +349,22 @@
             cb_key2.Size = new Size(108, 23);
             cb_key2.TabIndex = 18;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(12, 252);
+            label5.Name = "label5";
+            label5.Size = new Size(38, 15);
+            label5.TabIndex = 24;
+            label5.Text = "label5";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(404, 333);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(ckb_active2);
             Controls.Add(ckb_shift2);
@@ -415,5 +426,6 @@
         private CheckBox ckb_alt2;
         private CheckBox ckb_ctrl2;
         private ComboBox cb_key2;
+        private Label label5;
     }
 }

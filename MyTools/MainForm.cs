@@ -21,6 +21,8 @@ namespace MyTools
             if (Properties.Settings.Default.StartMinimized) WindowState = FormWindowState.Minimized;
 
             StartCommands();
+
+
         }
 
         private void StartCommands()
