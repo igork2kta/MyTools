@@ -59,5 +59,15 @@ namespace MyTools.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HelpApplication {
+            get {
+                object obj = ResourceManager.GetObject("HelpApplication", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

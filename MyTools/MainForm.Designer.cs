@@ -30,47 +30,26 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            label1 = new Label();
             bt_save = new Button();
-            cb_key0 = new ComboBox();
-            ckb_ctrl0 = new CheckBox();
-            ckb_alt0 = new CheckBox();
-            ckb_shift0 = new CheckBox();
-            ckb_active0 = new CheckBox();
             notifyIcon = new NotifyIcon(components);
             contextMenuStrip = new ContextMenuStrip(components);
             abrirToolStripMenuItem = new ToolStripMenuItem();
             fecharToolStripMenuItem = new ToolStripMenuItem();
-            ckb_active1 = new CheckBox();
-            ckb_shift1 = new CheckBox();
-            ckb_alt1 = new CheckBox();
-            ckb_ctrl1 = new CheckBox();
-            cb_key1 = new ComboBox();
-            label2 = new Label();
             ckb_autoStart = new CheckBox();
             ckb_startMinimized = new CheckBox();
             label3 = new Label();
             ckb_alwaysPresent = new CheckBox();
-            label4 = new Label();
-            ckb_active2 = new CheckBox();
-            ckb_shift2 = new CheckBox();
-            ckb_alt2 = new CheckBox();
-            ckb_ctrl2 = new CheckBox();
-            cb_key2 = new ComboBox();
-            label5 = new Label();
+            lbl_help = new Label();
+            dataGridView = new DataGridView();
+            tb_funcao = new DataGridViewTextBoxColumn();
+            ckb_ctrl = new DataGridViewCheckBoxColumn();
+            ckb_alt = new DataGridViewCheckBoxColumn();
+            ckb_shift = new DataGridViewCheckBoxColumn();
+            cb_tecla = new DataGridViewComboBoxColumn();
+            ckb_ativo = new DataGridViewCheckBoxColumn();
             contextMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(248, 21);
-            label1.TabIndex = 1;
-            label1.Text = "Criar novo documento de texto";
             // 
             // bt_save
             // 
@@ -80,66 +59,12 @@
             bt_save.FlatStyle = FlatStyle.Flat;
             bt_save.ForeColor = Color.Transparent;
             bt_save.Image = (Image)resources.GetObject("bt_save.Image");
-            bt_save.Location = new Point(365, 295);
+            bt_save.Location = new Point(646, 292);
             bt_save.Name = "bt_save";
             bt_save.Size = new Size(32, 32);
             bt_save.TabIndex = 7;
             bt_save.UseVisualStyleBackColor = false;
             bt_save.Click += bt_save_Click;
-            // 
-            // cb_key0
-            // 
-            cb_key0.FormattingEnabled = true;
-            cb_key0.Location = new Point(192, 36);
-            cb_key0.Name = "cb_key0";
-            cb_key0.Size = new Size(108, 23);
-            cb_key0.TabIndex = 0;
-            // 
-            // ckb_ctrl0
-            // 
-            ckb_ctrl0.AutoSize = true;
-            ckb_ctrl0.ForeColor = SystemColors.ButtonHighlight;
-            ckb_ctrl0.Location = new Point(38, 38);
-            ckb_ctrl0.Name = "ckb_ctrl0";
-            ckb_ctrl0.Size = new Size(45, 19);
-            ckb_ctrl0.TabIndex = 3;
-            ckb_ctrl0.Text = "Ctrl";
-            ckb_ctrl0.UseVisualStyleBackColor = true;
-            // 
-            // ckb_alt0
-            // 
-            ckb_alt0.AutoSize = true;
-            ckb_alt0.ForeColor = SystemColors.ButtonHighlight;
-            ckb_alt0.Location = new Point(89, 38);
-            ckb_alt0.Name = "ckb_alt0";
-            ckb_alt0.Size = new Size(41, 19);
-            ckb_alt0.TabIndex = 4;
-            ckb_alt0.Text = "Alt";
-            ckb_alt0.UseVisualStyleBackColor = true;
-            // 
-            // ckb_shift0
-            // 
-            ckb_shift0.AutoSize = true;
-            ckb_shift0.ForeColor = SystemColors.ButtonHighlight;
-            ckb_shift0.Location = new Point(136, 38);
-            ckb_shift0.Name = "ckb_shift0";
-            ckb_shift0.Size = new Size(50, 19);
-            ckb_shift0.TabIndex = 5;
-            ckb_shift0.Text = "Shift";
-            ckb_shift0.UseVisualStyleBackColor = true;
-            // 
-            // ckb_active0
-            // 
-            ckb_active0.AutoSize = true;
-            ckb_active0.Checked = true;
-            ckb_active0.CheckState = CheckState.Checked;
-            ckb_active0.ForeColor = SystemColors.ButtonHighlight;
-            ckb_active0.Location = new Point(318, 40);
-            ckb_active0.Name = "ckb_active0";
-            ckb_active0.Size = new Size(54, 19);
-            ckb_active0.TabIndex = 6;
-            ckb_active0.Text = "Ativo";
-            ckb_active0.UseVisualStyleBackColor = true;
             // 
             // notifyIcon
             // 
@@ -170,76 +95,12 @@
             fecharToolStripMenuItem.Text = "Fechar";
             fecharToolStripMenuItem.Click += FecharToolStripMenuItem_Click;
             // 
-            // ckb_active1
-            // 
-            ckb_active1.AutoSize = true;
-            ckb_active1.Checked = true;
-            ckb_active1.CheckState = CheckState.Checked;
-            ckb_active1.ForeColor = SystemColors.ButtonHighlight;
-            ckb_active1.Location = new Point(318, 104);
-            ckb_active1.Name = "ckb_active1";
-            ckb_active1.Size = new Size(54, 19);
-            ckb_active1.TabIndex = 12;
-            ckb_active1.Text = "Ativo";
-            ckb_active1.UseVisualStyleBackColor = true;
-            // 
-            // ckb_shift1
-            // 
-            ckb_shift1.AutoSize = true;
-            ckb_shift1.ForeColor = SystemColors.ButtonHighlight;
-            ckb_shift1.Location = new Point(136, 102);
-            ckb_shift1.Name = "ckb_shift1";
-            ckb_shift1.Size = new Size(50, 19);
-            ckb_shift1.TabIndex = 11;
-            ckb_shift1.Text = "Shift";
-            ckb_shift1.UseVisualStyleBackColor = true;
-            // 
-            // ckb_alt1
-            // 
-            ckb_alt1.AutoSize = true;
-            ckb_alt1.ForeColor = SystemColors.ButtonHighlight;
-            ckb_alt1.Location = new Point(89, 102);
-            ckb_alt1.Name = "ckb_alt1";
-            ckb_alt1.Size = new Size(41, 19);
-            ckb_alt1.TabIndex = 10;
-            ckb_alt1.Text = "Alt";
-            ckb_alt1.UseVisualStyleBackColor = true;
-            // 
-            // ckb_ctrl1
-            // 
-            ckb_ctrl1.AutoSize = true;
-            ckb_ctrl1.ForeColor = SystemColors.ButtonHighlight;
-            ckb_ctrl1.Location = new Point(38, 102);
-            ckb_ctrl1.Name = "ckb_ctrl1";
-            ckb_ctrl1.Size = new Size(45, 19);
-            ckb_ctrl1.TabIndex = 9;
-            ckb_ctrl1.Text = "Ctrl";
-            ckb_ctrl1.UseVisualStyleBackColor = true;
-            // 
-            // cb_key1
-            // 
-            cb_key1.FormattingEnabled = true;
-            cb_key1.Location = new Point(192, 100);
-            cb_key1.Name = "cb_key1";
-            cb_key1.Size = new Size(108, 23);
-            cb_key1.TabIndex = 8;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(12, 73);
-            label2.Name = "label2";
-            label2.Size = new Size(210, 21);
-            label2.TabIndex = 13;
-            label2.Text = "Bota virgula pra mim Mini";
-            // 
             // ckb_autoStart
             // 
+            ckb_autoStart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             ckb_autoStart.AutoSize = true;
             ckb_autoStart.ForeColor = SystemColors.ButtonHighlight;
-            ckb_autoStart.Location = new Point(12, 308);
+            ckb_autoStart.Location = new Point(11, 300);
             ckb_autoStart.Name = "ckb_autoStart";
             ckb_autoStart.Size = new Size(147, 19);
             ckb_autoStart.TabIndex = 14;
@@ -249,9 +110,10 @@
             // 
             // ckb_startMinimized
             // 
+            ckb_startMinimized.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             ckb_startMinimized.AutoSize = true;
             ckb_startMinimized.ForeColor = SystemColors.ButtonHighlight;
-            ckb_startMinimized.Location = new Point(177, 308);
+            ckb_startMinimized.Location = new Point(176, 300);
             ckb_startMinimized.Name = "ckb_startMinimized";
             ckb_startMinimized.Size = new Size(124, 19);
             ckb_startMinimized.TabIndex = 15;
@@ -261,171 +123,140 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(12, 202);
+            label3.Location = new Point(11, 260);
             label3.Name = "label3";
             label3.Size = new Size(124, 21);
             label3.TabIndex = 16;
             label3.Text = "Nunca ausente";
+            label3.Visible = false;
             // 
             // ckb_alwaysPresent
             // 
+            ckb_alwaysPresent.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             ckb_alwaysPresent.AutoSize = true;
-            ckb_alwaysPresent.Checked = true;
-            ckb_alwaysPresent.CheckState = CheckState.Checked;
             ckb_alwaysPresent.ForeColor = SystemColors.ButtonHighlight;
-            ckb_alwaysPresent.Location = new Point(163, 206);
+            ckb_alwaysPresent.Location = new Point(162, 264);
             ckb_alwaysPresent.Name = "ckb_alwaysPresent";
             ckb_alwaysPresent.Size = new Size(54, 19);
             ckb_alwaysPresent.TabIndex = 17;
             ckb_alwaysPresent.Text = "Ativo";
             ckb_alwaysPresent.UseVisualStyleBackColor = true;
+            ckb_alwaysPresent.Visible = false;
             ckb_alwaysPresent.CheckedChanged += ckb_alwaysPresent_CheckedChanged;
             // 
-            // label4
+            // lbl_help
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.ForeColor = SystemColors.ButtonHighlight;
-            label4.Location = new Point(12, 139);
-            label4.Name = "label4";
-            label4.Size = new Size(192, 21);
-            label4.TabIndex = 23;
-            label4.Text = "Desformatador de texto";
+            lbl_help.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lbl_help.BackColor = Color.Transparent;
+            lbl_help.Font = new Font("Segoe UI", 10F);
+            lbl_help.ForeColor = SystemColors.ButtonHighlight;
+            lbl_help.Image = (Image)resources.GetObject("lbl_help.Image");
+            lbl_help.Location = new Point(658, 9);
+            lbl_help.Name = "lbl_help";
+            lbl_help.Size = new Size(20, 18);
+            lbl_help.TabIndex = 25;
             // 
-            // ckb_active2
+            // dataGridView
             // 
-            ckb_active2.AutoSize = true;
-            ckb_active2.Checked = true;
-            ckb_active2.CheckState = CheckState.Checked;
-            ckb_active2.ForeColor = SystemColors.ButtonHighlight;
-            ckb_active2.Location = new Point(318, 170);
-            ckb_active2.Name = "ckb_active2";
-            ckb_active2.Size = new Size(54, 19);
-            ckb_active2.TabIndex = 22;
-            ckb_active2.Text = "Ativo";
-            ckb_active2.UseVisualStyleBackColor = true;
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.AllowUserToOrderColumns = true;
+            dataGridView.BackgroundColor = Color.FromArgb(64, 64, 64);
+            dataGridView.BorderStyle = BorderStyle.None;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { tb_funcao, ckb_ctrl, ckb_alt, ckb_shift, cb_tecla, ckb_ativo });
+            dataGridView.Location = new Point(12, 12);
+            dataGridView.Name = "dataGridView";
+            dataGridView.Size = new Size(640, 221);
+            dataGridView.TabIndex = 38;
             // 
-            // ckb_shift2
+            // tb_funcao
             // 
-            ckb_shift2.AutoSize = true;
-            ckb_shift2.ForeColor = SystemColors.ButtonHighlight;
-            ckb_shift2.Location = new Point(136, 168);
-            ckb_shift2.Name = "ckb_shift2";
-            ckb_shift2.Size = new Size(50, 19);
-            ckb_shift2.TabIndex = 21;
-            ckb_shift2.Text = "Shift";
-            ckb_shift2.UseVisualStyleBackColor = true;
+            tb_funcao.Frozen = true;
+            tb_funcao.HeaderText = "FUNCAO";
+            tb_funcao.Name = "tb_funcao";
+            tb_funcao.Width = 250;
             // 
-            // ckb_alt2
+            // ckb_ctrl
             // 
-            ckb_alt2.AutoSize = true;
-            ckb_alt2.ForeColor = SystemColors.ButtonHighlight;
-            ckb_alt2.Location = new Point(89, 168);
-            ckb_alt2.Name = "ckb_alt2";
-            ckb_alt2.Size = new Size(41, 19);
-            ckb_alt2.TabIndex = 20;
-            ckb_alt2.Text = "Alt";
-            ckb_alt2.UseVisualStyleBackColor = true;
+            ckb_ctrl.FalseValue = "";
+            ckb_ctrl.HeaderText = "CTRL";
+            ckb_ctrl.IndeterminateValue = "";
+            ckb_ctrl.Name = "ckb_ctrl";
+            ckb_ctrl.TrueValue = "";
+            ckb_ctrl.Width = 50;
             // 
-            // ckb_ctrl2
+            // ckb_alt
             // 
-            ckb_ctrl2.AutoSize = true;
-            ckb_ctrl2.ForeColor = SystemColors.ButtonHighlight;
-            ckb_ctrl2.Location = new Point(38, 168);
-            ckb_ctrl2.Name = "ckb_ctrl2";
-            ckb_ctrl2.Size = new Size(45, 19);
-            ckb_ctrl2.TabIndex = 19;
-            ckb_ctrl2.Text = "Ctrl";
-            ckb_ctrl2.UseVisualStyleBackColor = true;
+            ckb_alt.HeaderText = "ALT";
+            ckb_alt.IndeterminateValue = "";
+            ckb_alt.Name = "ckb_alt";
+            ckb_alt.Width = 50;
             // 
-            // cb_key2
+            // ckb_shift
             // 
-            cb_key2.FormattingEnabled = true;
-            cb_key2.Location = new Point(192, 166);
-            cb_key2.Name = "cb_key2";
-            cb_key2.Size = new Size(108, 23);
-            cb_key2.TabIndex = 18;
+            ckb_shift.HeaderText = "SHIFT";
+            ckb_shift.IndeterminateValue = "";
+            ckb_shift.Name = "ckb_shift";
+            ckb_shift.Width = 50;
             // 
-            // label5
+            // cb_tecla
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(12, 252);
-            label5.Name = "label5";
-            label5.Size = new Size(38, 15);
-            label5.TabIndex = 24;
-            label5.Text = "label5";
+            cb_tecla.HeaderText = "TECLA";
+            cb_tecla.Name = "cb_tecla";
+            // 
+            // ckb_ativo
+            // 
+            ckb_ativo.HeaderText = "ATIVO";
+            ckb_ativo.IndeterminateValue = "";
+            ckb_ativo.Name = "ckb_ativo";
+            ckb_ativo.Width = 50;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
-            ClientSize = new Size(404, 333);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(ckb_active2);
-            Controls.Add(ckb_shift2);
-            Controls.Add(ckb_alt2);
-            Controls.Add(ckb_ctrl2);
-            Controls.Add(cb_key2);
+            ClientSize = new Size(685, 330);
+            Controls.Add(dataGridView);
+            Controls.Add(lbl_help);
             Controls.Add(ckb_alwaysPresent);
             Controls.Add(label3);
             Controls.Add(ckb_startMinimized);
             Controls.Add(ckb_autoStart);
-            Controls.Add(label2);
-            Controls.Add(ckb_active1);
-            Controls.Add(ckb_shift1);
-            Controls.Add(ckb_alt1);
-            Controls.Add(ckb_ctrl1);
-            Controls.Add(cb_key1);
             Controls.Add(bt_save);
-            Controls.Add(ckb_active0);
-            Controls.Add(ckb_shift0);
-            Controls.Add(ckb_alt0);
-            Controls.Add(ckb_ctrl0);
-            Controls.Add(label1);
-            Controls.Add(cb_key0);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
             Text = "My Tools";
             Load += MainForm_Load;
             SizeChanged += MainForm_SizeChanged;
             contextMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label label1;
         private Button bt_save;
-        private ComboBox cb_key0;
-        private CheckBox ckb_ctrl0;
-        private CheckBox ckb_alt0;
-        private CheckBox ckb_shift0;
-        private CheckBox ckb_active0;
         private NotifyIcon notifyIcon;
         private ContextMenuStrip contextMenuStrip;
         private ToolStripMenuItem abrirToolStripMenuItem;
         private ToolStripMenuItem fecharToolStripMenuItem;
-        private CheckBox ckb_active1;
-        private CheckBox ckb_shift1;
-        private CheckBox ckb_alt1;
-        private CheckBox ckb_ctrl1;
-        private ComboBox cb_key1;
-        private Label label2;
         private CheckBox ckb_autoStart;
         private CheckBox ckb_startMinimized;
         private Label label3;
         private CheckBox ckb_alwaysPresent;
-        private Label label4;
-        private CheckBox ckb_active2;
-        private CheckBox ckb_shift2;
-        private CheckBox ckb_alt2;
-        private CheckBox ckb_ctrl2;
-        private ComboBox cb_key2;
-        private Label label5;
+        private Label lbl_help;
+        private DataGridView dataGridView;
+        private DataGridViewTextBoxColumn tb_funcao;
+        private DataGridViewCheckBoxColumn ckb_ctrl;
+        private DataGridViewCheckBoxColumn ckb_alt;
+        private DataGridViewCheckBoxColumn ckb_shift;
+        private DataGridViewComboBoxColumn cb_tecla;
+        private DataGridViewCheckBoxColumn ckb_ativo;
     }
 }

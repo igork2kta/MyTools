@@ -9,12 +9,15 @@ namespace MyTools.Classes
         // COM Imports
         [DllImport("user32.dll")]
         static extern IntPtr GetForegroundWindow();
-        
+
         [DllImport("user32.dll")]
         static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
 
+        /*
         static string GetActiveExplorerPath()
         {
+
+
             // get the active window
             IntPtr handle = GetForegroundWindow();
 
@@ -55,6 +58,38 @@ namespace MyTools.Classes
             }
             return "";
         }
+        */
+
+
+        static string GetActiveExplorerPath()
+        {
+            IntPtr handle = GetForegroundWindow();
+
+            // Buscar diretamente a janela correta
+            ShellWindows shellWindows = new();
+            var activeWindow = shellWindows.Cast<InternetExplorer>()
+                                           .FirstOrDefault(window => window.HWND == (int)handle);
+
+            if (activeWindow?.Document is Shell32.IShellFolderViewDual2 shellWindow)
+            {
+                Shell32.FolderItem currentFolder = shellWindow.Folder.Items().Item();
+
+                if (currentFolder == null || currentFolder.Path.StartsWith("::"))
+                {
+                    const int nChars = 256;
+                    StringBuilder Buff = new(nChars);
+                    if (GetWindowText(handle, Buff, nChars) > 0)
+                        return Buff.ToString();
+                }
+                else
+                {
+                    return currentFolder.Path;
+                }
+            }
+
+            return "";
+        }
+
 
         public static void Criar()
         {
@@ -73,7 +108,6 @@ namespace MyTools.Classes
                 return;
             }
 
-
             // Procura um nome alternativo
             for (int i = 1; i < 50; i++)
             {
@@ -84,6 +118,7 @@ namespace MyTools.Classes
                     return;
                 }
             }
+
         }
     }
 }

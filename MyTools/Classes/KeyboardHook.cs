@@ -6,6 +6,7 @@ namespace MyTools.Classes
 {
     public class ShortcutKey
     {
+        public string Name { get; set; }
         public Keys Key { get; set; }
         public bool Control { get; set; }
         public bool Alt { get; set; }

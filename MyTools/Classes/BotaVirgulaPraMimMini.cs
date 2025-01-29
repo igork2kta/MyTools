@@ -25,8 +25,9 @@ namespace MyTools.Classes
             }
 
             Clipboard.SetText(resultBuilder.ToString());
+            AtalhoCtrlV.Disparar();
 
-            Notification.SendNotification("Pronto!", "Texto com vírgula copiado para sua área de transferência!");
+            //Notification.SendNotification("Pronto!", "Texto com vírgula copiado para sua área de transferência!");
 
         }
     }

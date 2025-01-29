@@ -11,5 +11,11 @@
     <Setting Name="AlwaysPresent" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="PadraoCancelChamado" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Identificamos que este chamado não caracteriza erro de sistema e foi aberto o chamado Nº {0} no caminho correto</Value>
+    </Setting>
+    <Setting Name="PadraoChamadoSubstituicao" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Chamado aberto em substituição ao chamado Nº {0}, que foi cancelado por estar classificado incorretamente.</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

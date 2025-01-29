@@ -12,7 +12,7 @@ namespace MyTools.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -56,6 +56,32 @@ namespace MyTools.Properties {
             }
             set {
                 this["AlwaysPresent"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Identificamos que este chamado não caracteriza erro de sistema e foi aberto o cha" +
+            "mado Nº {0} no caminho correto")]
+        public string PadraoCancelChamado {
+            get {
+                return ((string)(this["PadraoCancelChamado"]));
+            }
+            set {
+                this["PadraoCancelChamado"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Chamado aberto em substituição ao chamado Nº {0}, que foi cancelado por estar cla" +
+            "ssificado incorretamente.")]
+        public string PadraoChamadoSubstituicao {
+            get {
+                return ((string)(this["PadraoChamadoSubstituicao"]));
+            }
+            set {
+                this["PadraoChamadoSubstituicao"] = value;
             }
         }
     }
