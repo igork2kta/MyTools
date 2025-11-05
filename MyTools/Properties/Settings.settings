@@ -17,5 +17,8 @@
     <Setting Name="PadraoChamadoSubstituicao" Type="System.String" Scope="User">
       <Value Profile="(Default)">Chamado aberto em substituição ao chamado Nº {0}, que foi cancelado por estar classificado incorretamente.</Value>
     </Setting>
+    <Setting Name="AutoStartDelay" Type="System.String" Scope="User">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -1,7 +1,5 @@
 using MyTools.Classes;
-using System;
 using System.Reflection;
-using System.Windows.Forms;
 
 namespace MyTools
 {
@@ -14,6 +12,9 @@ namespace MyTools
         const int ckb_shift_index = 3;
         const int cb_tecla_index = 4;
         const int ckb_ativo_index = 5;
+        OSwitch OSwitch = new();
+        string originalValue;
+        bool starting = true;
         public MainForm()
         {
             InitializeComponent();
@@ -28,6 +29,9 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             toolTip.SetToolTip(lbl_help, helpText);
 
             tb_funcao.ReadOnly = true;
+
+            ToolTip delayTooltip = new ToolTip();
+            delayTooltip.SetToolTip(lbl_delay, "Aumente o delay se os dispositivos de audio não estiverem sendo reconhecidos na inicialização!");
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -36,14 +40,15 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             ckb_alwaysPresent.Checked = Properties.Settings.Default.AlwaysPresent;
             ckb_autoStart.Checked = Properties.Settings.Default.AutoStart;
             ckb_startMinimized.Checked = Properties.Settings.Default.StartMinimized;
+            tb_delay.Text = Properties.Settings.Default.AutoStartDelay;
 
             if (Properties.Settings.Default.StartMinimized) WindowState = FormWindowState.Minimized;
 
-            cb_tecla.DataSource = Enum.GetNames(typeof(Keys));
+            //cb_tecla.DataSource = Enum.GetNames(typeof(Keys));
 
 
             StartCommands();
-
+            starting = false;
 
         }
 
@@ -64,6 +69,9 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             {
                 dataGridView.Rows.Add(shortcut.Name, shortcut.Control, shortcut.Alt, shortcut.Shift, shortcut.Key.ToString(), shortcut.Active);
             }
+
+            if (shortcuts[5].Active) shortcuts[5] = DispararOSwitch();
+            else shortcuts.Remove(shortcuts[5]);
 
             if (shortcuts[4].Active) shortcuts[4] = TextoPadraoSubstituicaoChamado();
             else shortcuts.Remove(shortcuts[4]);
@@ -94,7 +102,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
 
         private ShortcutKey CreateNewTextFileCommand()
         {
- 
+
             return new ShortcutKey
             {
                 Name = "Criar novo documento de texto",
@@ -164,6 +172,20 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             };
         }
 
+        private ShortcutKey DispararOSwitch()
+        {
+
+            return new ShortcutKey
+            {
+                Name = "Alternar dispositivos de audio",
+                Key = GetEnumValue<Keys>(dataGridView.Rows[5].Cells[cb_tecla_index].Value.ToString()),
+                Control = (bool)dataGridView.Rows[5].Cells[ckb_ctrl_index].Value,
+                Shift = (bool)dataGridView.Rows[5].Cells[ckb_shift_index].Value,
+                Alt = (bool)dataGridView.Rows[5].Cells[ckb_alt_index].Value,
+                EventHandler = (s, e) => { Task.Run(() => OSwitch.DoSwitch()); },
+                Active = (bool)dataGridView.Rows[5].Cells[ckb_ativo_index].Value
+            };
+        }
         private void TextoPadrao(string tipo)
         {
             if (tipo == "CANCELAMENTO")
@@ -214,7 +236,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             shortcuts.Add(new ShortcutKey
             {
                 Name = "Texto padrão cancelamento chamado",
-                Key = GetEnumValue<Keys>("1"),
+                Key = GetEnumValue<Keys>("D1"),
                 Control = true,
                 Shift = true,
                 Alt = false,
@@ -225,12 +247,25 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             shortcuts.Add(new ShortcutKey
             {
                 Name = "Texto padrão chamado substituição",
-                Key = GetEnumValue<Keys>("2"),
+                Key = GetEnumValue<Keys>("D1"),
                 Control = true,
                 Shift = true,
                 Alt = false,
                 EventHandler = (s, e) => { TextoPadrao("SUBSTITUICAO"); },
                 Active = false
+            });
+
+
+
+            shortcuts.Add(new ShortcutKey
+            {
+                Name = "Texto padrão chamado substituição",
+                Key = GetEnumValue<Keys>("Oem3"),
+                Control = true,
+                Shift = false,
+                Alt = false,
+                EventHandler = (s, e) => { DispararOSwitch(); },
+                Active = true
             });
         }
 
@@ -242,33 +277,21 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                 BotaVirgulaPraMimMiniCommand(),
                 TextUnformatterCommand(),
                 TextoPadraoCancelamentoChamado(),
-                TextoPadraoSubstituicaoChamado()
+                TextoPadraoSubstituicaoChamado(),
+                DispararOSwitch()
             };
             ConfigLoader.SaveConfig(shortcuts);
             KeyboardHook.Stop();
             StartCommands();
         }
 
-        public static T GetEnumValue<T>(string str) where T : struct, IConvertible
+        public static T GetEnumValue<T>(string str) where T : struct, Enum
         {
-            if (!typeof(T).IsEnum)
-            {
-                throw new Exception("T must be an Enumeration type.");
-            }
-            T val = ((T[])Enum.GetValues(typeof(T)))[0];
-            if (!string.IsNullOrEmpty(str))
-            {
-                foreach (T enumValue in (T[])Enum.GetValues(typeof(T)))
-                {
-                    if (enumValue.ToString().ToUpper().Equals(str.ToUpper()))
-                    {
-                        val = enumValue;
-                        break;
-                    }
-                }
-            }
-            return val;
+            if (!Enum.TryParse<T>(str, true, out var result))
+                return default; // retorna Keys.None no caso de Keys
+            return result;
         }
+
 
         private void NotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -290,10 +313,22 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
 
         private void ckb_autoStart_CheckedChanged(object sender, EventArgs e)
         {
-            AutoStartManager.SetAutoStart(ckb_autoStart.Checked);
+            if (starting) return;
+            bool result = AutoStartManager.SetAutoStart(ckb_autoStart.Checked, Convert.ToInt32(tb_delay.Value));
+
+            starting = true;
+            //Não conseguiu agendar a tarefa
+            if (ckb_autoStart.Checked && !result) ckb_autoStart.Checked = false;
+            //Não conseguiu remover a tarefa
+            if (!ckb_autoStart.Checked && !result) ckb_autoStart.Checked = true;
+            starting = false;
+
+            Properties.Settings.Default.AutoStart = ckb_autoStart.Checked;
+            Properties.Settings.Default.Save();
         }
         private void ckb_startMinimized_CheckedChanged(object sender, EventArgs e)
         {
+            if (starting) return;
             Properties.Settings.Default.StartMinimized = ckb_startMinimized.Checked;
             Properties.Settings.Default.Save();
         }
@@ -309,6 +344,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
 
         private void ckb_alwaysPresent_CheckedChanged(object sender, EventArgs e)
         {
+            if (starting) return;
             Properties.Settings.Default.AlwaysPresent = ckb_alwaysPresent.Checked;
             Properties.Settings.Default.Save();
 
@@ -317,6 +353,72 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
 
         }
 
+        private void bt_audio_devices_Click(object sender, EventArgs e)
+        {
+            var deviceSelect = new DeviceSelectorForm();
+            deviceSelect.ShowDialog();
+        }
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verifica se clicou na coluna desejada (índice 5)
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0)
+            {
+                dataGridView.BeginEdit(true);
+            }
+        }
+
+        private void dataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (dataGridView.CurrentCell.ColumnIndex == 4)
+            {
+                if (e.Control is TextBox tb)
+                {
+                    // Remove eventos antigos para não duplicar
+                    tb.KeyDown -= dataGridView_KeyDown;
+                    tb.KeyDown += dataGridView_KeyDown;
+
+                    //Salva o valor original
+                    originalValue = tb.Text;
+                    tb.Text = "Pressione uma tecla...";
+                }
+            }
+        }
+
+        private void dataGridView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (sender is TextBox tb)
+            {
+                Keys selectedKey = e.KeyCode;
+                tb.Text = selectedKey.ToString();
+                e.SuppressKeyPress = true; // Evita que a tecla seja inserida
+            }
+        }
+
+        private void dataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0)
+            {
+                var cell = dataGridView[e.ColumnIndex, e.RowIndex];
+                if (cell.Value?.ToString() == "Pressione uma tecla..." || string.IsNullOrEmpty(cell.Value?.ToString()))
+                {
+                    cell.Value = originalValue; // Restaura valor original
+                    originalValue = "";
+                }
+            }
+        }
+
+        private void tb_delay_ValueChanged(object sender, EventArgs e)
+        {
+            if (starting) return;
+
+            Properties.Settings.Default.AutoStartDelay = tb_delay.ToString();
+            Properties.Settings.Default.Save();
+
+            if (ckb_autoStart.Checked)
+            {
+                AutoStartManager.SetAutoStart(true, Convert.ToInt32(tb_delay.Value));
+            }
+        }
     }
 
 }
