@@ -110,7 +110,7 @@ namespace MyTools.Classes
                     }
                 }
             };
-
+            Console.WriteLine("CTRL V");
             // Envia os eventos de entrada
             SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(INPUT)));
         }

@@ -7,6 +7,7 @@ namespace MyTools
     {
         readonly string TextoCancelamentoChamado = Properties.Settings.Default.PadraoCancelChamado;
         readonly string TextoChamadoSubstituicao = Properties.Settings.Default.PadraoChamadoSubstituicao;
+        readonly string TextoPas = Properties.Settings.Default.PadraoPas;
         const int ckb_ctrl_index = 1;
         const int ckb_alt_index = 2;
         const int ckb_shift_index = 3;
@@ -69,6 +70,9 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             {
                 dataGridView.Rows.Add(shortcut.Name, shortcut.Control, shortcut.Alt, shortcut.Shift, shortcut.Key.ToString(), shortcut.Active);
             }
+
+            if (shortcuts[6].Active) shortcuts[6] = TextoPadraoPas();
+            else shortcuts.Remove(shortcuts[6]);
 
             if (shortcuts[5].Active) shortcuts[5] = DispararOSwitch();
             else shortcuts.Remove(shortcuts[5]);
@@ -186,15 +190,33 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                 Active = (bool)dataGridView.Rows[5].Cells[ckb_ativo_index].Value
             };
         }
+
+        private ShortcutKey TextoPadraoPas()
+        {
+            return new ShortcutKey
+            {
+                Name = "Texto padrão pas",
+                Key = GetEnumValue<Keys>(dataGridView.Rows[6].Cells[cb_tecla_index].Value.ToString()),
+                Control = (bool)dataGridView.Rows[6].Cells[ckb_ctrl_index].Value,
+                Shift = (bool)dataGridView.Rows[6].Cells[ckb_shift_index].Value,
+                Alt = (bool)dataGridView.Rows[6].Cells[ckb_alt_index].Value,
+                EventHandler = (s, e) => { TextoPadrao("PAS"); },
+                Active = (bool)dataGridView.Rows[6].Cells[ckb_ativo_index].Value
+            };
+        }
         private void TextoPadrao(string tipo)
         {
             if (tipo == "CANCELAMENTO")
             {
-                TextUnformatter.TextoPadrao(TextoCancelamentoChamado);
+                TextUnformatter.Texto112598Padrao(TextoCancelamentoChamado);
             }
             else if (tipo == "SUBSTITUICAO")
             {
                 TextUnformatter.TextoPadrao(TextoChamadoSubstituicao);
+            }
+            else if(tipo == "PAS")
+            {
+                TextUnformatter.TextoPadrao(TextoPas);
             }
         }
 
@@ -255,12 +277,21 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                 Active = false
             });
 
-
+            shortcuts.Add(new ShortcutKey
+            {
+                Name = "Alternar dispositivos de audio",
+                Key = GetEnumValue<Keys>("Oem3"),
+                Control = true,
+                Shift = false,
+                Alt = false,
+                EventHandler = (s, e) => { DispararOSwitch(); },
+                Active = true
+            });
 
             shortcuts.Add(new ShortcutKey
             {
-                Name = "Texto padrão chamado substituição",
-                Key = GetEnumValue<Keys>("Oem3"),
+                Name = "Texto padrão pas",
+                Key = GetEnumValue<Keys>("F3"),
                 Control = true,
                 Shift = false,
                 Alt = false,
@@ -278,7 +309,8 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                 TextUnformatterCommand(),
                 TextoPadraoCancelamentoChamado(),
                 TextoPadraoSubstituicaoChamado(),
-                DispararOSwitch()
+                DispararOSwitch(),
+                TextoPadraoPas()
             };
             ConfigLoader.SaveConfig(shortcuts);
             KeyboardHook.Stop();

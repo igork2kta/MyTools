@@ -46,9 +46,13 @@ namespace MyTools.Classes
                             MessageBox.Show("Existe uma task de inicialização com delay configurada, para remover é necessária permissão de administrador!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return false;
                         }
-                    } 
+                    }
 
-                    Reg?.DeleteValue(Application.ProductName);
+                    try
+                    {
+                        Reg?.DeleteValue(Application.ProductName);
+                    }
+                    catch(ArgumentException ex) { }
                 }
                     
 
@@ -63,7 +67,11 @@ namespace MyTools.Classes
             try
             {
                 //Apaga o registro se existir
-                Reg?.DeleteValue(Application.ProductName);
+                try
+                {
+                    Reg?.DeleteValue(Application.ProductName);
+                }
+                catch (ArgumentException ex) { }
 
                 string exePath = Application.ExecutablePath;
                 string arguments = $@"/Create /F /RL HIGHEST /SC ONLOGON /TN ""{TaskName}"" /TR ""\""{exePath}\"""" /DELAY 0000:{delay}";
@@ -108,7 +116,11 @@ namespace MyTools.Classes
         {
             try
             {
-                Reg?.DeleteValue(Application.ProductName);
+                try
+                {
+                    Reg?.DeleteValue(Application.ProductName);
+                }
+                catch (ArgumentException ex) { }
 
                 string arguments = $@"/Delete /F /TN ""{TaskName}""";
                 ProcessStartInfo psi = new ProcessStartInfo("schtasks", arguments)

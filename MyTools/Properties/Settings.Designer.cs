@@ -96,5 +96,17 @@ namespace MyTools.Properties {
                 this["AutoStartDelay"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SilveiraSousa@21")]
+        public string PadraoPas {
+            get {
+                return ((string)(this["PadraoPas"]));
+            }
+            set {
+                this["PadraoPas"] = value;
+            }
+        }
     }
 }

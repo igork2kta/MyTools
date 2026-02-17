@@ -20,6 +20,7 @@ namespace MyTools.Classes
 
         public static List<ShortcutKey> LoadConfig()
         {
+            
             if (File.Exists(ConfigFilePath))
             {
                 string jsonString = File.ReadAllText(ConfigFilePath);

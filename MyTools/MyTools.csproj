@@ -8,6 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <AssemblyVersion>1.4.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

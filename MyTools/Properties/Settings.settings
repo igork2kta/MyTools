@@ -20,5 +20,8 @@
     <Setting Name="AutoStartDelay" Type="System.String" Scope="User">
       <Value Profile="(Default)">30</Value>
     </Setting>
+    <Setting Name="PadraoPas" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SilveiraSousa@21</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
