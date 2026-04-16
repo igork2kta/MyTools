@@ -208,6 +208,7 @@
             bt_audio_devices.TabIndex = 39;
             bt_audio_devices.Text = "Audio Devices";
             bt_audio_devices.UseVisualStyleBackColor = true;
+            bt_audio_devices.Visible = false;
             bt_audio_devices.Click += bt_audio_devices_Click;
             // 
             // lbl_delay

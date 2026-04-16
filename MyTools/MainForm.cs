@@ -14,7 +14,7 @@ namespace MyTools
         const int ckb_shift_index = 3;
         const int cb_tecla_index = 4;
         const int ckb_ativo_index = 5;
-        OSwitch OSwitch = new();
+        //OSwitch OSwitch = new();
         string originalValue;
         bool starting = true;
 
@@ -66,7 +66,8 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             shortcuts = ConfigLoader.LoadConfig();
 
             //Popular com o padrão
-            if (shortcuts.Count < 7) ValoresPadrao(ref shortcuts);
+            if (shortcuts.Count < 7) 
+                ValoresPadrao(ref shortcuts);
 
             foreach (ShortcutKey shortcut in shortcuts)
             {
@@ -74,11 +75,11 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             }
 
             
-            if (shortcuts[7].Active) shortcuts[7] = SwitchMonitor();
-            else shortcuts.Remove(shortcuts[7]);
-
-            if (shortcuts[6].Active) shortcuts[6] = DispararOSwitch();
+            if (shortcuts[6].Active) shortcuts[6] = SwitchMonitor();
             else shortcuts.Remove(shortcuts[6]);
+
+            //if (shortcuts[6].Active) shortcuts[6] = DispararOSwitch();
+            //else shortcuts.Remove(shortcuts[6]);
 
             if (shortcuts[5].Active) shortcuts[5] = WhereMountCommand();
             else shortcuts.Remove(shortcuts[5]);
@@ -225,33 +226,34 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
 
         }
 
+        /*
         private ShortcutKey DispararOSwitch()
         {
 
             return new ShortcutKey
             {
                 Name = "Alternar display principal",
-                Key = GetEnumValue<Keys>(dataGridView.Rows[6].Cells[cb_tecla_index].Value.ToString()),
-                Control = (bool)dataGridView.Rows[6].Cells[ckb_ctrl_index].Value,
-                Shift = (bool)dataGridView.Rows[6].Cells[ckb_shift_index].Value,
-                Alt = (bool)dataGridView.Rows[6].Cells[ckb_alt_index].Value,
+                Key = GetEnumValue<Keys>(dataGridView.Rows[7].Cells[cb_tecla_index].Value.ToString()),
+                Control = (bool)dataGridView.Rows[7].Cells[ckb_ctrl_index].Value,
+                Shift = (bool)dataGridView.Rows[7].Cells[ckb_shift_index].Value,
+                Alt = (bool)dataGridView.Rows[7].Cells[ckb_alt_index].Value,
                 EventHandler = (s, e) => { Task.Run(() => OSwitch.DoSwitch()); },
-                Active = (bool)dataGridView.Rows[6].Cells[ckb_ativo_index].Value
+                Active = (bool)dataGridView.Rows[7].Cells[ckb_ativo_index].Value
             };
         }
-
+        */
 
         private ShortcutKey SwitchMonitor()
         {
             return new ShortcutKey
             {
                 Name = "Alternar dispositivos de audio",
-                Key = GetEnumValue<Keys>(dataGridView.Rows[7].Cells[cb_tecla_index].Value.ToString()),
-                Control = (bool)dataGridView.Rows[7].Cells[ckb_ctrl_index].Value,
-                Shift = (bool)dataGridView.Rows[7].Cells[ckb_shift_index].Value,
-                Alt = (bool)dataGridView.Rows[7].Cells[ckb_alt_index].Value,
+                Key = GetEnumValue<Keys>(dataGridView.Rows[6].Cells[cb_tecla_index].Value.ToString()),
+                Control = (bool)dataGridView.Rows[6].Cells[ckb_ctrl_index].Value,
+                Shift = (bool)dataGridView.Rows[6].Cells[ckb_shift_index].Value,
+                Alt = (bool)dataGridView.Rows[6].Cells[ckb_alt_index].Value,
                 EventHandler = (s, e) => { Task.Run(() => DisplaySwitch.SwitchToNextMonitor()); },
-                Active = (bool)dataGridView.Rows[7].Cells[ckb_ativo_index].Value
+                Active = (bool)dataGridView.Rows[6].Cells[ckb_ativo_index].Value
             };
 
         }
@@ -278,9 +280,10 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
 
         private void ValoresPadrao(ref List<ShortcutKey> shortcuts)
         {
-            
-            if(shortcuts.Count == 0)
-                shortcuts.Add(new ShortcutKey
+
+            shortcuts = new List<ShortcutKey>();
+
+            shortcuts.Add(new ShortcutKey
                 {
                     Name = "Criar novo documento de texto",
                     Key = GetEnumValue<Keys>("M"),
@@ -291,7 +294,6 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                     Active = false
                 });
 
-            if (shortcuts.Count == 1)
                 shortcuts.Add(new ShortcutKey
                 {
                     Name = "Bota virgula pra mim mini",
@@ -302,11 +304,11 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                     EventHandler = (s, e) => { BotaVirgulaPraMimMini.Executar(); },
                     Active = false
                 });
-            if (shortcuts.Count == 2)
+
                 shortcuts.Add(new ShortcutKey
                 {
                     Name = "Desformatador de texto",
-                    Key = GetEnumValue<Keys>("V"),
+                    Key = GetEnumValue<Keys>("A"),
                     Control = true,
                     Shift = true,
                     Alt = false,
@@ -314,7 +316,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                     Active = false
                 });
 
-            if (shortcuts.Count == 3)
+
                 shortcuts.Add(new ShortcutKey
                 {
                     Name = "Texto padrão cancelamento chamado",
@@ -326,7 +328,6 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                     Active = false
                 });
 
-            if (shortcuts.Count == 4)
                 shortcuts.Add(new ShortcutKey
                 {
                     Name = "Texto padrão chamado substituição",
@@ -338,7 +339,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                     Active = false
                 });
 
-            if (shortcuts.Count == 5)
+
                 shortcuts.Add(new ShortcutKey
                 {
                     Name = "Where mount",
@@ -350,7 +351,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                     Active = false
                 });
 
-            if (shortcuts.Count == 6)
+            /*
                 shortcuts.Add(new ShortcutKey
                 {
                     Name = "Alternar dispositivos de audio",
@@ -358,11 +359,11 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                     Control = true,
                     Shift = false,
                     Alt = false,
-                    EventHandler = (s, e) => { DispararOSwitch(); },
+                    EventHandler = (s, e) => { OSwitch.DoSwitch(); },
                     Active = true
                 });
+            */
 
-            if (shortcuts.Count == 7)
                 shortcuts.Add(new ShortcutKey
                 {
                     Name = "Alternar display principal",
@@ -370,7 +371,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                     Control = true,
                     Shift = false,
                     Alt = false,
-                    EventHandler = (s, e) => { SwitchMonitor(); },
+                    EventHandler = (s, e) => { DisplaySwitch.SwitchToNextMonitor(); },
                     Active = true
                 });
         }
@@ -388,7 +389,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                 TextoPadraoCancelamentoChamado(),
                 TextoPadraoSubstituicaoChamado(),
                 WhereMountCommand(),
-                DispararOSwitch(),
+                //DispararOSwitch(),
                 SwitchMonitor()
             };
             ConfigLoader.SaveConfig(shortcuts);
