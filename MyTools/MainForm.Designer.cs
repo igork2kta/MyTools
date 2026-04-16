@@ -183,12 +183,13 @@
             // 
             // ckb_ctrl
             // 
-            ckb_ctrl.FalseValue = "";
             ckb_ctrl.HeaderText = "CTRL";
             ckb_ctrl.IndeterminateValue = "";
             ckb_ctrl.Name = "ckb_ctrl";
             ckb_ctrl.TrueValue = "";
             ckb_ctrl.Width = 50;
+            ckb_ctrl.FalseValue = false;
+            ckb_ctrl.TrueValue = true;
             // 
             // ckb_alt
             // 

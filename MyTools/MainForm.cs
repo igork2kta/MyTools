@@ -40,6 +40,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             if (Properties.Settings.Default.StartMinimized) WindowState = FormWindowState.Minimized;
 
             cb_tecla.DataSource = Enum.GetNames(typeof(Keys));
+            ckb_ctrl.ValueType = typeof(bool);
 
 
             StartCommands();
@@ -51,19 +52,22 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
         {
 
             dataGridView.Rows.Clear();
-            if (ckb_alwaysPresent.Checked) AlwaysPresent.Start();
-            else AlwaysPresent.Stop();
+            /*if (ckb_alwaysPresent.Checked) AlwaysPresent.Start();
+            else AlwaysPresent.Stop();*/
 
             List<ShortcutKey> shortcuts = new List<ShortcutKey>();
             shortcuts = ConfigLoader.LoadConfig();
 
             //Popular com o padrão
-            if (shortcuts.Count == 0) ValoresPadrao(ref shortcuts);
+            if (shortcuts.Count < 6) ValoresPadrao(ref shortcuts);
 
             foreach (ShortcutKey shortcut in shortcuts)
             {
                 dataGridView.Rows.Add(shortcut.Name, shortcut.Control, shortcut.Alt, shortcut.Shift, shortcut.Key.ToString(), shortcut.Active);
             }
+
+            if (shortcuts[5].Active) shortcuts[5] = WhereMountCommand();
+            else shortcuts.Remove(shortcuts[5]);
 
             if (shortcuts[4].Active) shortcuts[4] = TextoPadraoSubstituicaoChamado();
             else shortcuts.Remove(shortcuts[4]);
@@ -80,7 +84,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             if (shortcuts[0].Active) shortcuts[0] = CreateNewTextFileCommand();
             else shortcuts.Remove(shortcuts[0]);
 
-
+            
             KeyboardHook.Start(shortcuts);
 
         }
@@ -164,6 +168,26 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             };
         }
 
+        private ShortcutKey WhereMountCommand()
+        {
+
+
+            return new ShortcutKey
+            {
+                Name = "Montar Where",
+                Key = GetEnumValue<Keys>(dataGridView.Rows[5].Cells[cb_tecla_index].Value.ToString()),
+                Control = (bool)dataGridView.Rows[5].Cells[ckb_ctrl_index].Value,
+                Shift = (bool)dataGridView.Rows[5].Cells[ckb_shift_index].Value,
+                Alt = (bool)dataGridView.Rows[5].Cells[ckb_alt_index].Value,
+                EventHandler = (s, e) => { WhereMount.Executar(); },
+                Active = (bool)dataGridView.Rows[5].Cells[ckb_ativo_index].Value
+            };
+
+          
+
+
+        }
+
         private void TextoPadrao(string tipo)
         {
             if (tipo == "CANCELAMENTO")
@@ -178,71 +202,92 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
 
         private void ValoresPadrao(ref List<ShortcutKey> shortcuts)
         {
-            shortcuts.Add(new ShortcutKey
-            {
-                Name = "Criar novo documento de texto",
-                Key = GetEnumValue<Keys>("M"),
-                Control = true,
-                Shift = true,
-                Alt = false,
-                EventHandler = (s, e) => { Task.Run(() => CreateNewTextFile.Criar()); },
-                Active = false
-            });
+            
+            if(shortcuts.Count == 0)
+                shortcuts.Add(new ShortcutKey
+                {
+                    Name = "Criar novo documento de texto",
+                    Key = GetEnumValue<Keys>("M"),
+                    Control = true,
+                    Shift = true,
+                    Alt = false,
+                    EventHandler = (s, e) => { Task.Run(() => CreateNewTextFile.Criar()); },
+                    Active = false
+                });
 
-            shortcuts.Add(new ShortcutKey
-            {
-                Name = "Bota virgula pra mim mini",
-                Key = GetEnumValue<Keys>("B"),
-                Control = true,
-                Shift = true,
-                Alt = false,
-                EventHandler = (s, e) => { BotaVirgulaPraMimMini.Executar(); },
-                Active = false
-            });
+            if (shortcuts.Count == 1)
+                shortcuts.Add(new ShortcutKey
+                {
+                    Name = "Bota virgula pra mim mini",
+                    Key = GetEnumValue<Keys>("B"),
+                    Control = true,
+                    Shift = true,
+                    Alt = false,
+                    EventHandler = (s, e) => { BotaVirgulaPraMimMini.Executar(); },
+                    Active = false
+                });
+            if (shortcuts.Count == 2)
+                shortcuts.Add(new ShortcutKey
+                {
+                    Name = "Desformatador de texto",
+                    Key = GetEnumValue<Keys>("V"),
+                    Control = true,
+                    Shift = true,
+                    Alt = false,
+                    EventHandler = (s, e) => { TextUnformatter.UnformatText(); },
+                    Active = false
+                });
 
-            shortcuts.Add(new ShortcutKey
-            {
-                Name = "Desformatador de texto",
-                Key = GetEnumValue<Keys>("V"),
-                Control = true,
-                Shift = true,
-                Alt = false,
-                EventHandler = (s, e) => { TextUnformatter.UnformatText(); },
-                Active = false
-            });
+            if (shortcuts.Count == 3)
+                shortcuts.Add(new ShortcutKey
+                {
+                    Name = "Texto padrão cancelamento chamado",
+                    Key = GetEnumValue<Keys>("1"),
+                    Control = true,
+                    Shift = true,
+                    Alt = false,
+                    EventHandler = (s, e) => { TextoPadrao("CANCELAMENTO"); },
+                    Active = false
+                });
 
-            shortcuts.Add(new ShortcutKey
-            {
-                Name = "Texto padrão cancelamento chamado",
-                Key = GetEnumValue<Keys>("1"),
-                Control = true,
-                Shift = true,
-                Alt = false,
-                EventHandler = (s, e) => { TextoPadrao("CANCELAMENTO"); },
-                Active = false
-            });
+            if (shortcuts.Count == 4)
+                shortcuts.Add(new ShortcutKey
+                {
+                    Name = "Texto padrão chamado substituição",
+                    Key = GetEnumValue<Keys>("2"),
+                    Control = true,
+                    Shift = true,
+                    Alt = false,
+                    EventHandler = (s, e) => { TextoPadrao("SUBSTITUICAO"); },
+                    Active = false
+                });
 
-            shortcuts.Add(new ShortcutKey
-            {
-                Name = "Texto padrão chamado substituição",
-                Key = GetEnumValue<Keys>("2"),
-                Control = true,
-                Shift = true,
-                Alt = false,
-                EventHandler = (s, e) => { TextoPadrao("SUBSTITUICAO"); },
-                Active = false
-            });
+            if (shortcuts.Count == 5)
+                shortcuts.Add(new ShortcutKey
+                {
+                    Name = "Where mount",
+                    Key = GetEnumValue<Keys>("W"),
+                    Control = true,
+                    Shift = true,
+                    Alt = false,
+                    EventHandler = (s, e) => { WhereMount.Executar(); },
+                    Active = false
+                });
         }
+
+        
 
         private void bt_save_Click(object sender, EventArgs e)
         {
+            dataGridView.EndEdit();
             List<ShortcutKey> shortcuts = new List<ShortcutKey>
             {
                 CreateNewTextFileCommand(),
                 BotaVirgulaPraMimMiniCommand(),
                 TextUnformatterCommand(),
                 TextoPadraoCancelamentoChamado(),
-                TextoPadraoSubstituicaoChamado()
+                TextoPadraoSubstituicaoChamado(),
+                WhereMountCommand()
             };
             ConfigLoader.SaveConfig(shortcuts);
             KeyboardHook.Stop();
