@@ -10,6 +10,7 @@ namespace MyTools.Classes
             //Obtém o texto da área de transferencia
             string clipboardText = Clipboard.GetText();
 
+            if (string.IsNullOrEmpty(clipboardText)) return "";
 
             clipboardText = Regex.Replace(clipboardText, @"[\t\r]", "");
             clipboardText = Regex.Replace(clipboardText, @"[\n]", " ");
@@ -39,7 +40,7 @@ namespace MyTools.Classes
 
             Clipboard.SetText(String.Format(texto, chamado));
             AtalhoCtrlV.Disparar();
-
+            Thread.Sleep(100);
         }
        
     }
