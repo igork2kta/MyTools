@@ -37,19 +37,17 @@
             fecharToolStripMenuItem = new ToolStripMenuItem();
             ckb_autoStart = new CheckBox();
             ckb_startMinimized = new CheckBox();
-            label3 = new Label();
-            ckb_alwaysPresent = new CheckBox();
             lbl_help = new Label();
             dataGridView = new DataGridView();
-            bt_audio_devices = new Button();
-            lbl_delay = new Label();
-            tb_delay = new NumericUpDown();
             tb_funcao = new DataGridViewTextBoxColumn();
             ckb_ctrl = new DataGridViewCheckBoxColumn();
             ckb_alt = new DataGridViewCheckBoxColumn();
             ckb_shift = new DataGridViewCheckBoxColumn();
             tb_tecla = new DataGridViewTextBoxColumn();
             ckb_ativo = new DataGridViewCheckBoxColumn();
+            bt_audio_devices = new Button();
+            lbl_delay = new Label();
+            tb_delay = new NumericUpDown();
             contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tb_delay).BeginInit();
@@ -125,33 +123,6 @@
             ckb_startMinimized.UseVisualStyleBackColor = true;
             ckb_startMinimized.CheckedChanged += ckb_startMinimized_CheckedChanged;
             // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(11, 260);
-            label3.Name = "label3";
-            label3.Size = new Size(124, 21);
-            label3.TabIndex = 16;
-            label3.Text = "Nunca ausente";
-            label3.Visible = false;
-            // 
-            // ckb_alwaysPresent
-            // 
-            ckb_alwaysPresent.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            ckb_alwaysPresent.AutoSize = true;
-            ckb_alwaysPresent.ForeColor = SystemColors.ButtonHighlight;
-            ckb_alwaysPresent.Location = new Point(162, 264);
-            ckb_alwaysPresent.Name = "ckb_alwaysPresent";
-            ckb_alwaysPresent.Size = new Size(54, 19);
-            ckb_alwaysPresent.TabIndex = 17;
-            ckb_alwaysPresent.Text = "Ativo";
-            ckb_alwaysPresent.UseVisualStyleBackColor = true;
-            ckb_alwaysPresent.Visible = false;
-            ckb_alwaysPresent.CheckedChanged += ckb_alwaysPresent_CheckedChanged;
-            // 
             // lbl_help
             // 
             lbl_help.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -175,41 +146,12 @@
             dataGridView.Columns.AddRange(new DataGridViewColumn[] { tb_funcao, ckb_ctrl, ckb_alt, ckb_shift, tb_tecla, ckb_ativo });
             dataGridView.Location = new Point(12, 12);
             dataGridView.Name = "dataGridView";
-            dataGridView.Size = new Size(640, 221);
+            dataGridView.Size = new Size(640, 274);
             dataGridView.TabIndex = 38;
             dataGridView.CellClick += dataGridView_CellClick;
             dataGridView.CellEndEdit += dataGridView_CellEndEdit;
             dataGridView.EditingControlShowing += dataGridView_EditingControlShowing;
             dataGridView.KeyDown += dataGridView_KeyDown;
-            // 
-            // bt_audio_devices
-            // 
-            bt_audio_devices.Location = new Point(549, 297);
-            bt_audio_devices.Name = "bt_audio_devices";
-            bt_audio_devices.Size = new Size(91, 23);
-            bt_audio_devices.TabIndex = 39;
-            bt_audio_devices.Text = "Audio Devices";
-            bt_audio_devices.UseVisualStyleBackColor = true;
-            bt_audio_devices.Click += bt_audio_devices_Click;
-            // 
-            // lbl_delay
-            // 
-            lbl_delay.AutoSize = true;
-            lbl_delay.ForeColor = Color.White;
-            lbl_delay.Location = new Point(164, 302);
-            lbl_delay.Name = "lbl_delay";
-            lbl_delay.Size = new Size(36, 15);
-            lbl_delay.TabIndex = 41;
-            lbl_delay.Text = "Delay";
-            // 
-            // tb_delay
-            // 
-            tb_delay.Location = new Point(206, 297);
-            tb_delay.Maximum = new decimal(new int[] { 60, 0, 0, 0 });
-            tb_delay.Name = "tb_delay";
-            tb_delay.Size = new Size(36, 23);
-            tb_delay.TabIndex = 42;
-            tb_delay.ValueChanged += tb_delay_ValueChanged;
             // 
             // tb_funcao
             // 
@@ -220,12 +162,12 @@
             // 
             // ckb_ctrl
             // 
+            ckb_ctrl.FalseValue = false;
             ckb_ctrl.HeaderText = "CTRL";
             ckb_ctrl.Name = "ckb_ctrl";
             ckb_ctrl.Resizable = DataGridViewTriState.True;
-            ckb_ctrl.Width = 50;
-            ckb_ctrl.FalseValue = false;
             ckb_ctrl.TrueValue = true;
+            ckb_ctrl.Width = 50;
             // 
             // ckb_alt
             // 
@@ -257,6 +199,38 @@
             ckb_ativo.Name = "ckb_ativo";
             ckb_ativo.Width = 50;
             // 
+            // bt_audio_devices
+            // 
+            bt_audio_devices.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            bt_audio_devices.Location = new Point(549, 297);
+            bt_audio_devices.Name = "bt_audio_devices";
+            bt_audio_devices.Size = new Size(91, 23);
+            bt_audio_devices.TabIndex = 39;
+            bt_audio_devices.Text = "Audio Devices";
+            bt_audio_devices.UseVisualStyleBackColor = true;
+            bt_audio_devices.Click += bt_audio_devices_Click;
+            // 
+            // lbl_delay
+            // 
+            lbl_delay.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lbl_delay.AutoSize = true;
+            lbl_delay.ForeColor = Color.White;
+            lbl_delay.Location = new Point(164, 302);
+            lbl_delay.Name = "lbl_delay";
+            lbl_delay.Size = new Size(36, 15);
+            lbl_delay.TabIndex = 41;
+            lbl_delay.Text = "Delay";
+            // 
+            // tb_delay
+            // 
+            tb_delay.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            tb_delay.Location = new Point(206, 297);
+            tb_delay.Maximum = new decimal(new int[] { 60, 0, 0, 0 });
+            tb_delay.Name = "tb_delay";
+            tb_delay.Size = new Size(36, 23);
+            tb_delay.TabIndex = 42;
+            tb_delay.ValueChanged += tb_delay_ValueChanged;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -268,8 +242,6 @@
             Controls.Add(bt_audio_devices);
             Controls.Add(dataGridView);
             Controls.Add(lbl_help);
-            Controls.Add(ckb_alwaysPresent);
-            Controls.Add(label3);
             Controls.Add(ckb_startMinimized);
             Controls.Add(ckb_autoStart);
             Controls.Add(bt_save);
@@ -293,8 +265,6 @@
         private ToolStripMenuItem fecharToolStripMenuItem;
         private CheckBox ckb_autoStart;
         private CheckBox ckb_startMinimized;
-        private Label label3;
-        private CheckBox ckb_alwaysPresent;
         private Label lbl_help;
         private DataGridView dataGridView;
         private Button bt_audio_devices;

@@ -38,7 +38,6 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
         private void MainForm_Load(object sender, EventArgs e)
         {
 
-            ckb_alwaysPresent.Checked = Properties.Settings.Default.AlwaysPresent;
             ckb_autoStart.Checked = Properties.Settings.Default.AutoStart;
             ckb_startMinimized.Checked = Properties.Settings.Default.StartMinimized;
             tb_delay.Text = Properties.Settings.Default.AutoStartDelay;
@@ -65,7 +64,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             shortcuts = ConfigLoader.LoadConfig();
 
             //Popular com o padrão
-            if (shortcuts.Count < 6) ValoresPadrao(ref shortcuts);
+            if (shortcuts.Count < 7) ValoresPadrao(ref shortcuts);
 
             foreach (ShortcutKey shortcut in shortcuts)
             {
@@ -73,10 +72,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             }
 
             
-
-            
-
-             if (shortcuts[7].Active) shortcuts[7] = SwitchMonitor();
+            if (shortcuts[7].Active) shortcuts[7] = SwitchMonitor();
             else shortcuts.Remove(shortcuts[7]);
 
             if (shortcuts[6].Active) shortcuts[6] = DispararOSwitch();
@@ -429,16 +425,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
 
         private void FecharToolStripMenuItem_Click(object sender, EventArgs e) => Close();
 
-        private void ckb_alwaysPresent_CheckedChanged(object sender, EventArgs e)
-        {
-            if (starting) return;
-            Properties.Settings.Default.AlwaysPresent = ckb_alwaysPresent.Checked;
-            Properties.Settings.Default.Save();
-
-            if (ckb_alwaysPresent.Checked) AlwaysPresent.Start();
-            else AlwaysPresent.Stop();
-
-        }
+     
 
         private void bt_audio_devices_Click(object sender, EventArgs e)
         {
