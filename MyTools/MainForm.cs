@@ -70,8 +70,9 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             {
                 dataGridView.Rows.Add(shortcut.Name, shortcut.Control, shortcut.Alt, shortcut.Shift, shortcut.Key.ToString(), shortcut.Active);
             }
+            
 
-            if (shortcuts[6].Active) shortcuts[6] = TextoPadraoPas();
+             if (shortcuts[6].Active) shortcuts[6] = SwitchMonitor();
             else shortcuts.Remove(shortcuts[6]);
 
             if (shortcuts[5].Active) shortcuts[5] = DispararOSwitch();
@@ -91,7 +92,6 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
 
             if (shortcuts[0].Active) shortcuts[0] = CreateNewTextFileCommand();
             else shortcuts.Remove(shortcuts[0]);
-
 
             KeyboardHook.Start(shortcuts);
 
@@ -191,24 +191,27 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             };
         }
 
-        private ShortcutKey TextoPadraoPas()
+
+        private ShortcutKey SwitchMonitor()
         {
             return new ShortcutKey
             {
-                Name = "Texto padrão pas",
+                Name = "Alternar dispositivos de audio",
                 Key = GetEnumValue<Keys>(dataGridView.Rows[6].Cells[cb_tecla_index].Value.ToString()),
                 Control = (bool)dataGridView.Rows[6].Cells[ckb_ctrl_index].Value,
                 Shift = (bool)dataGridView.Rows[6].Cells[ckb_shift_index].Value,
                 Alt = (bool)dataGridView.Rows[6].Cells[ckb_alt_index].Value,
-                EventHandler = (s, e) => { TextoPadrao("PAS"); },
+                EventHandler = (s, e) => { Task.Run(() => DisplaySwitch.SwitchToNextMonitor()); },
                 Active = (bool)dataGridView.Rows[6].Cells[ckb_ativo_index].Value
             };
+
         }
+
         private void TextoPadrao(string tipo)
         {
             if (tipo == "CANCELAMENTO")
             {
-                TextUnformatter.Texto112598Padrao(TextoCancelamentoChamado);
+                TextUnformatter.TextoPadrao(TextoCancelamentoChamado);
             }
             else if (tipo == "SUBSTITUICAO")
             {
@@ -219,6 +222,8 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                 TextUnformatter.TextoPadrao(TextoPas);
             }
         }
+
+        
 
         private void ValoresPadrao(ref List<ShortcutKey> shortcuts)
         {
@@ -288,14 +293,15 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                 Active = true
             });
 
+
             shortcuts.Add(new ShortcutKey
             {
-                Name = "Texto padrão pas",
+                Name = "Alternar display principal",
                 Key = GetEnumValue<Keys>("F3"),
                 Control = true,
                 Shift = false,
                 Alt = false,
-                EventHandler = (s, e) => { DispararOSwitch(); },
+                EventHandler = (s, e) => { SwitchMonitor(); },
                 Active = true
             });
         }
@@ -310,7 +316,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
                 TextoPadraoCancelamentoChamado(),
                 TextoPadraoSubstituicaoChamado(),
                 DispararOSwitch(),
-                TextoPadraoPas()
+                SwitchMonitor()
             };
             ConfigLoader.SaveConfig(shortcuts);
             KeyboardHook.Stop();
