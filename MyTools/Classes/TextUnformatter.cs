@@ -14,25 +14,34 @@ namespace MyTools.Classes
 
             clipboardText = Regex.Replace(clipboardText, @"[\t\r]", "");
             clipboardText = Regex.Replace(clipboardText, @"[\n]", " ");
-
-            if (disparaAtalho)
+            try
             {
-                Clipboard.SetText(clipboardText);
-                AtalhoCtrlV.Disparar();
-                return string.Empty;
+                if (disparaAtalho)
+                {
+                    Clipboard.SetText(clipboardText);
+                    AtalhoCtrlV.Disparar();
+                    return string.Empty;
+                }
+                else
+                {
+                    return clipboardText;
+                }
             }
-            else
+            catch(Exception ex)
             {
-                return clipboardText;
+                MessageBox.Show("Erro", $"Erro ao executar atalho: {ex.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
 
-            //Notification.SendNotification("Pronto!", "Texto sem formatação copiado para sua área de transferência!");
+            
         }
 
         public static void TextoPadrao(string texto)
         {
-
+            Console.WriteLine("TEXT UNFORMATTER");
             string input = UnformatText(false);
+
+            if (string.IsNullOrEmpty(input)) return;
 
             long chamado;
 

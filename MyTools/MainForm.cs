@@ -1,5 +1,6 @@
 using MyTools.Classes;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace MyTools
 {
@@ -16,6 +17,8 @@ namespace MyTools
         OSwitch OSwitch = new();
         string originalValue;
         bool starting = true;
+
+        private HotkeyManager _hotkeyManager;
         public MainForm()
         {
             InitializeComponent();
@@ -38,7 +41,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
         private void MainForm_Load(object sender, EventArgs e)
         {
 
-            ckb_alwaysPresent.Checked = Properties.Settings.Default.AlwaysPresent;
+            //ckb_alwaysPresent.Checked = Properties.Settings.Default.AlwaysPresent;
             ckb_autoStart.Checked = Properties.Settings.Default.AutoStart;
             ckb_startMinimized.Checked = Properties.Settings.Default.StartMinimized;
             tb_delay.Text = Properties.Settings.Default.AutoStartDelay;
@@ -48,8 +51,8 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             //cb_tecla.DataSource = Enum.GetNames(typeof(Keys));
 
 
-            StartCommands();
-            starting = false;
+            //StartCommands();
+            //starting = false;
 
         }
 
@@ -57,8 +60,8 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
         {
 
             dataGridView.Rows.Clear();
-            if (ckb_alwaysPresent.Checked) AlwaysPresent.Start();
-            else AlwaysPresent.Stop();
+            //if (ckb_alwaysPresent.Checked) AlwaysPresent.Start();
+            //else AlwaysPresent.Stop();
 
             List<ShortcutKey> shortcuts = new List<ShortcutKey>();
             shortcuts = ConfigLoader.LoadConfig();
@@ -93,13 +96,37 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
             if (shortcuts[0].Active) shortcuts[0] = CreateNewTextFileCommand();
             else shortcuts.Remove(shortcuts[0]);
 
-            KeyboardHook.Start(shortcuts);
 
+            _hotkeyManager = new HotkeyManager(this.Handle);
+            _hotkeyManager.RegisterShortcuts(shortcuts);
+
+            //KeyboardHook.Start(shortcuts);
+
+        }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+
+            StartCommands();
+            starting = false;
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x0312) // WM_HOTKEY
+            {
+                _hotkeyManager?.ProcessHotkey(m);
+            }
+
+            base.WndProc(ref m);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            KeyboardHook.Stop();
+            _hotkeyManager?.Dispose();
+  
+            //KeyboardHook.Stop();
         }
 
 
@@ -196,7 +223,7 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
         {
             return new ShortcutKey
             {
-                Name = "Alternar dispositivos de audio",
+                Name = "Alternar display principal",
                 Key = GetEnumValue<Keys>(dataGridView.Rows[6].Cells[cb_tecla_index].Value.ToString()),
                 Control = (bool)dataGridView.Rows[6].Cells[ckb_ctrl_index].Value,
                 Shift = (bool)dataGridView.Rows[6].Cells[ckb_shift_index].Value,
@@ -209,6 +236,8 @@ Versão {Assembly.GetEntryAssembly().GetName().Version}";
 
         private void TextoPadrao(string tipo)
         {
+            Console.WriteLine("Texto Padrão");
+
             if (tipo == "CANCELAMENTO")
             {
                 TextUnformatter.TextoPadrao(TextoCancelamentoChamado);
